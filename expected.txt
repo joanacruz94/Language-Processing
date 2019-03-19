@@ -1,18 +1,16 @@
-Início da filtragem<pub (null)>
+<pub id="post-6243">
+<title>2015 será um ano difícil, diz o Presidente. Igual aos outros, acrescenta o Povo</title>
+<author_date>Redacção F8  29 de Dezembro de 2014</author_date>
 <tags>
- <tag>Eduardo dos Santos</tag> <tag>Petróleo</tag> <tag>mensagem</tag> <tag>preços</tag>
+<tag>Eduardo dos Santos</tag> <tag>Petróleo</tag> <tag>mensagem</tag> <tag>preços</tag>
 </tags>
-
 <category>Nacional</category>
-<title>2015 será um ano difícil, diz o Presidente. Igual aos outros, acrescenta o Povo
-_</title>Nada
-<author_date>  Redacção F8  29 de Dezembro de 20142</author_date>
 <text>
 2015 será um ano difícil, diz o Presidente. Igual aos outros, acrescenta o Povo - Folha 8
 A baixa no preço do barril de petróleo, verificada desde Junho, está a levar o Executivo de Eduardo
 dos Santos a traçar estratégias para contornar as dificuldades desencadeadas. Ou seja, com o preço
 do petróleo em alta ou em baixa, serão sempre os mais pobres a pagar a factura.
-.....
+....
 O corte nos subsídios aos combustíveis em 2015, é uma delas, prevendo o Governo angolano poupar
 mais de 870 milhões de euros com essa medida. Com esta medida, que consta do Orçamento Geral do
 Estado (OGE) de 2015, o Governo prevê para o próximo ano uma redução de cerca de 109,2 biliões de
@@ -21,8 +19,5 @@ quantidade de consumo de 2014.
 Depois de um último ajustamento ao preço dos combustíveis, em Setembro passado, com um aumento
 médio de 25% ao consumidor no gasóleo e gasolina, na quarta-feira passada, registou-se a um novo
 reajustamento de 20% nos preços dos mesmos tipos de combustíveis.
-Etiquetas: Eduardo dos SantosPetróleomensagempreços
 </text>
-</pub>Fim da filtragem
-
-
+</pub>
