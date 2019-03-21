@@ -10,36 +10,37 @@ char * id;
 %x DATE
 %x ID
 %x CLEAN
+%x CATEGORY
+%x TITLE
+%x TEXT
 
 %%
-#TAG:   		{printf("<tags>\n");BEGIN TAGS;}
+\<pub\>					{yytext[yyleng-1] = '\0'; printf("%s %s>", yytext, id) ;}
+"Etiquetas:"[^\n]+		{printf("limpo");}
+_+\n[A-Z ]+:			{printf("Nada");}
 
-<TAGS>tag:\{ 	{BEGIN TAG;}
-<TAGS>\n 		{printf("\n</tags>\n"); BEGIN INITIAL;}
+#TAG:   				{printf("<tags>\n");BEGIN TAGS;}
+<TAGS>tag:\{ 			{BEGIN TAG;}
+<TAGS>\n 				{printf("\n</tags>\n"); BEGIN INITIAL;}
 
-<TAG>\}   		{BEGIN TAGS;}  
-<TAG>[^}]+ 		{printf("<tag>%s</tag>", yytext);}
+<TAG>\}   				{BEGIN TAGS;}  
+<TAG>[^}]+ 				{printf("<tag>%s</tag>", yytext);}
 
-#DATE:			{printf("<author_date>"); BEGIN DATE;}
-<DATE>"[116eb]"/[^\n]+ 		{}
-<DATE>\n 		{printf("</author_date>\n"); BEGIN INITIAL;}
+#DATE:\ *\[[^]]+\]\ *   {printf("<author_date>"); BEGIN DATE;}
+<DATE>[^\n]+ 		 	{printf("%s", yytext);}
+<DATE>\n 			 	{printf("</author_date>\n"); BEGIN TEXT;}
 
-Nacional		{printf("<category>%s</category>", yytext);}
+<TEXT>[^<]+				{printf("<text>\n%s</text>\n", yytext); BEGIN INITIAL;}
 
-2015[^\n]+\n_	{printf("<title>%s</title>", yytext);}
+#ID:\{					{BEGIN ID;}
+<ID>[^ ]+				{id = strdup(yytext); BEGIN CLEAN;}
 
-2015[^_<]+	{printf("<text>\n%s</text>\n", yytext); }	
+<CLEAN>[^}]+\}\n		{BEGIN CATEGORY;}
 
-(_)+\n[A-Z ]+:	{printf("Nada");}
+<CATEGORY>.+\n    		{yytext[yyleng-1] = '\0'; printf("<category>%s</category>\n", yytext); BEGIN TITLE;}
 
-#ID:\{			{BEGIN ID;}
-<ID>[^ ]+		{id = strdup(yytext); BEGIN CLEAN;}
-
-<CLEAN>[^}]+\}	{BEGIN INITIAL;}	
-
-\<pub\>			{yytext[yyleng-1] = '\0'; printf("%s %s>", yytext, id) ;}
-
-"Etiquetas:"[^\n]+	{printf("limpo");}
+<TITLE>.+				{printf("<title>%s", yytext);}		
+<TITLE>\n      		    {printf("</title>"); BEGIN INITIAL;}
 
 %%
 
