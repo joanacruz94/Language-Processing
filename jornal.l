@@ -1,7 +1,16 @@
 %{
 #include <stdio.h>
 
+char ** tags;
+char * title;
 char * id;
+char * category;
+char * text;
+char * date;
+int i = 0;
+int j = 0;
+
+struct Noticia * noticia;
 %}
 
 
@@ -15,32 +24,40 @@ char * id;
 %x TEXT
 
 %%
-\<pub\>					{yytext[yyleng-1] = '\0'; printf("%s %s>", yytext, id) ;}
-"Etiquetas:"[^\n]+		{printf("limpo");}
-_+\n[A-Z ]+:			{printf("Nada");}
 
-#TAG:   				{printf("<tags>\n");BEGIN TAGS;}
+#TAG:   				{BEGIN TAGS;}
 <TAGS>tag:\{ 			{BEGIN TAG;}
-<TAGS>\n 				{printf("\n</tags>\n"); BEGIN INITIAL;}
+<TAGS>\n 				{BEGIN INITIAL;}
 
 <TAG>\}   				{BEGIN TAGS;}  
-<TAG>[^}]+ 				{printf("<tag>%s</tag>", yytext);}
-
-#DATE:\ *\[[^]]+\]\ *   {printf("<author_date>"); BEGIN DATE;}
-<DATE>[^\n]+ 		 	{printf("%s", yytext);}
-<DATE>\n 			 	{printf("</author_date>\n"); BEGIN TEXT;}
-
-<TEXT>[^<]+				{printf("<text>\n%s</text>\n", yytext); BEGIN INITIAL;}
+<TAG>[^}]+ 				{}
 
 #ID:\{					{BEGIN ID;}
 <ID>[^ ]+				{id = strdup(yytext); BEGIN CLEAN;}
 
 <CLEAN>[^}]+\}\n		{BEGIN CATEGORY;}
 
-<CATEGORY>.+\n    		{yytext[yyleng-1] = '\0'; printf("<category>%s</category>\n", yytext); BEGIN TITLE;}
+<CATEGORY>.+\n\n    	{yytext[yyleng-1] = '\0'; category = strdup(yytext); BEGIN TITLE;}
 
-<TITLE>.+				{printf("<title>%s", yytext);}		
-<TITLE>\n      		    {printf("</title>"); BEGIN INITIAL;}
+<TITLE>.+				{title = strdup(yytext);}		
+<TITLE>\n      		    {BEGIN INITIAL;}
+
+#DATE:\ *\[[^]]+\]\ *   {BEGIN DATE;}
+<DATE>[^\n]+ 		 	{date = strdup(yytext);}
+<DATE>\n 			 	{BEGIN TEXT;}
+
+<TEXT>[A-Z][^<]+		{text = strdup(yytext); BEGIN INITIAL;}
+
+\<\/pub\>				{FILE *fp;
+						char * idPost = strdup(id);
+						fp = fopen(strcat(id,".html"), "w");
+						fprintf(fp, "<html>\n<head>\n<pub id =%s>\n<title>%s</title>\n</head>", idPost, title);
+						fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS\n", date);
+						for(j=0; j<3; j++){
+							fprintf(fp,"<tag>tag, </tag>\n");
+						}
+						fprintf(fp,"</tags></p><p><category>%s</category></p><text>%s</text>\n</body>\n</html>", category, text);
+						fclose(fp);}
 
 %%
 
@@ -49,9 +66,10 @@ int yywrap(){
 }
 
 int main(){
-    printf("Início da filtragem");
     yylex();
-    printf("Fim da filtragem");
+    FILE *fp;
+	fp = fopen("tags.html", "w");
+	fprintf(fp, "<html><body><h1>Indice de tags</h1></body></html>");
     return 0;
 }
 
