@@ -1,16 +1,22 @@
 %{
 #include <stdio.h>
+#define MAXTAGPOST 20
 
-char ** tags;
+char * tagsPost[MAXTAGPOST];
 char * title;
 char * id;
 char * category;
 char * text;
 char * date;
-int i = 0;
+int numberTags = 0;
 int j = 0;
 
-struct Noticia * noticia;
+typedef struct listTags{
+	char * title;
+	char * link;
+	struct listTags * next;
+}*TAGS;
+
 %}
 
 
@@ -23,14 +29,15 @@ struct Noticia * noticia;
 %x TITLE
 %x TEXT
 
+
 %%
 
-#TAG:   				{BEGIN TAGS;}
+#TAG:   				{BEGIN TAGS; numberTags = 0;}
 <TAGS>tag:\{ 			{BEGIN TAG;}
 <TAGS>\n 				{BEGIN INITIAL;}
 
 <TAG>\}   				{BEGIN TAGS;}  
-<TAG>[^}]+ 				{}
+<TAG>[^}]+ 				{tagsPost[numberTags++]=strdup(yytext);}
 
 #ID:\{					{BEGIN ID;}
 <ID>[^ ]+				{id = strdup(yytext); BEGIN CLEAN;}
@@ -44,17 +51,17 @@ struct Noticia * noticia;
 
 #DATE:\ *\[[^]]+\]\ *   {BEGIN DATE;}
 <DATE>[^\n]+ 		 	{date = strdup(yytext);}
-<DATE>\n 			 	{BEGIN TEXT;}
+<DATE>\n[^\n]*\n\n 		{BEGIN TEXT;}
 
-<TEXT>[A-Z][^<]+		{text = strdup(yytext); BEGIN INITIAL;}
+<TEXT>[^<]+				{text = strdup(yytext); BEGIN INITIAL;}
 
 \<\/pub\>				{FILE *fp;
 						char * idPost = strdup(id);
 						fp = fopen(strcat(id,".html"), "w");
 						fprintf(fp, "<html>\n<head>\n<pub id =%s>\n<title>%s</title>\n</head>", idPost, title);
-						fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS\n", date);
-						for(j=0; j<3; j++){
-							fprintf(fp,"<tag>tag, </tag>\n");
+						fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS:\n", date);
+						for(j= 0; j < numberTags; j++){
+							fprintf(fp,"<tag>%s , </tag>\n", tagsPost[j]);
 						}
 						fprintf(fp,"</tags></p><p><category>%s</category></p><text>%s</text>\n</body>\n</html>", category, text);
 						fclose(fp);}
@@ -67,9 +74,12 @@ int yywrap(){
 
 int main(){
     yylex();
+    int i = 0;
     FILE *fp;
 	fp = fopen("tags.html", "w");
-	fprintf(fp, "<html><body><h1>Indice de tags</h1></body></html>");
+	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
+
+    fprintf(fp, "</body></html>");
     return 0;
 }
 
