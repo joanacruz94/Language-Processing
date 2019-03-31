@@ -522,16 +522,16 @@ char *yytext;
 #define MAXTAGPOST 20
 #define MAX 10000
 
-typedef struct t{
+typedef struct tBucket{
 	char *titulo;
 	char *id;
-	struct t *next;
+	struct tBucket *next;
 }*Titulo;
 
-typedef struct ts{
+typedef struct tagBucket{
      char *tag;
      int n;
-	Titulo tit;
+	Titulo titulo;
 }*TAG;
 
 typedef TAG tagList[MAX];
@@ -552,7 +552,7 @@ int search(char *tag, char *tit, char *id, tagList tags ){
 	int ntit = strlen(tit);
 	int nid  = strlen(id);
 
-	Titulo titulo = malloc(sizeof(struct t));
+	Titulo titulo = malloc(sizeof(struct tBucket));
 	titulo->titulo = malloc(sizeof(char) * ntit);
 	strcpy(titulo->titulo,tit);
 	titulo->id = malloc(sizeof(char) * nid);
@@ -561,26 +561,26 @@ int search(char *tag, char *tit, char *id, tagList tags ){
 
      while( i < MAX && tags[i] != NULL ){
           if(!strcmp(tag,tags[i]->tag)){
-			if(tags[i]->tit){
-				titulo->next = tags[i]->tit;
-				tags[i]->tit = titulo;
+			if(tags[i]->titulo){
+				titulo->next = tags[i]->titulo;
+				tags[i]->titulo = titulo;
 			}
 			else
-				(tags[i]->tit) = titulo;
-
+				(tags[i]->titulo) = titulo;
 			(tags[i]->n)++;
                break;
           }
           else
                i++;
      }
+
      if( i < MAX && tags[i] == NULL){
-          TAG tmp = malloc(sizeof(struct ts));
+          TAG tmp = malloc(sizeof(struct tagBucket));
           tmp->tag = malloc(sizeof(char) * n);
           strcpy(tmp->tag,tag);
           tmp->n = 1;
           tags[i] = tmp;
-		tags[i]->tit = titulo;
+		tags[i]->titulo = titulo;
           return 0;
      }
      else
@@ -1997,8 +1997,7 @@ int main(){
 	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
 	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
 		fprintf(fp, "<li>Tag: %s | Ocorrência: %d <p>\n\n", ltag[i]->tag,ltag[i]->n);
-
-		for(tmp = ltag[i]->tit; tmp; tmp = tmp->next)
+		for(tmp = ltag[i]->titulo; tmp; tmp = tmp->next)
 			fprintf(fp, "<p><a href=file:///Users/ruiazevedo/Desktop/Universidade/PL/PL/%s>%s</a></p>", tmp->id,tmp->titulo);
 		fprintf(fp, "</p></li>");
 	}
