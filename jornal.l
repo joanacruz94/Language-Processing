@@ -1,7 +1,19 @@
 %{
+#include <string.h>
 #include <stdio.h>
-#define MAXTAGPOST 20
+#include <stdlib.h>
 
+#define MAXTAGPOST 20
+#define MAX 10000
+
+typedef struct ts{
+     char *tag;
+     int n;
+}*TAG;
+
+typedef TAG tagList[MAX];
+
+tagList ltag;
 char * tagsPost[MAXTAGPOST];
 char * title;
 char * id;
@@ -11,11 +23,29 @@ char * date;
 int numberTags = 0;
 int j = 0;
 
-typedef struct listTags{
-	char * title;
-	char * link;
-	struct listTags * next;
-}*TAGS;
+int search(char *tag, tagList tags ){
+     int i = 0;
+     int n = strlen(tag);
+
+     while( i < MAX && tags[i] != NULL ){
+          if(!strcmp(tag,tags[i]->tag)){
+               (tags[i]->n)++;
+               break;
+          }
+          else
+               i++;
+     }
+     if( i < MAX && tags[i] == NULL){
+          TAG tmp = malloc(sizeof(struct ts));
+          tmp->tag = malloc(sizeof(char) * n);
+          strcpy(tmp->tag,tag);
+          tmp->n = 1;
+          tags[i] = tmp;
+          return 0;
+     }
+     else
+          return 1;
+}
 
 %}
 
@@ -36,8 +66,8 @@ typedef struct listTags{
 <TAGS>tag:\{ 			{BEGIN TAG;}
 <TAGS>\n 				{BEGIN INITIAL;}
 
-<TAG>\}   				{BEGIN TAGS;}  
-<TAG>[^}]+ 				{tagsPost[numberTags++]=strdup(yytext);}
+<TAG>\}   				{BEGIN TAGS;}
+<TAG>[^}]+ 				{tagsPost[numberTags++]=strdup(yytext); search(yytext,ltag);}
 
 #ID:\{					{BEGIN ID;}
 <ID>[^ ]+				{id = strdup(yytext); BEGIN CLEAN;}
@@ -46,7 +76,7 @@ typedef struct listTags{
 
 <CATEGORY>.+\n\n    	{yytext[yyleng-1] = '\0'; category = strdup(yytext); BEGIN TITLE;}
 
-<TITLE>.+				{title = strdup(yytext);}		
+<TITLE>.+				{title = strdup(yytext);}
 <TITLE>\n      		    {BEGIN INITIAL;}
 
 #DATE:\ *\[[^]]+\]\ *   {BEGIN DATE;}
@@ -74,12 +104,12 @@ int yywrap(){
 
 int main(){
     yylex();
-    int i = 0;
     FILE *fp;
 	fp = fopen("tags.html", "w");
 	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
-
+	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
+		fprintf(fp, "<li>Tag: %s | Ocorrência: %d</li>\n\n", ltag[i]->tag,ltag[i]->n);
+	}
     fprintf(fp, "</body></html>");
     return 0;
 }
-
