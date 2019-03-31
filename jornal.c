@@ -522,9 +522,16 @@ char *yytext;
 #define MAXTAGPOST 20
 #define MAX 10000
 
+typedef struct t{
+	char *titulo;
+	char *id;
+	struct t *next;
+}*Titulo;
+
 typedef struct ts{
      char *tag;
      int n;
+	Titulo tit;
 }*TAG;
 
 typedef TAG tagList[MAX];
@@ -539,13 +546,29 @@ char * date;
 int numberTags = 0;
 int j = 0;
 
-int search(char *tag, tagList tags ){
+int search(char *tag, char *tit, char *id, tagList tags ){
      int i = 0;
-     int n = strlen(tag);
+     int n  = strlen(tag);
+	int ntit = strlen(tit);
+	int nid  = strlen(id);
+
+	Titulo titulo = malloc(sizeof(struct t));
+	titulo->titulo = malloc(sizeof(char) * ntit);
+	strcpy(titulo->titulo,tit);
+	titulo->id = malloc(sizeof(char) * nid);
+	strcpy(titulo->id,id);
+	titulo->next = NULL;
 
      while( i < MAX && tags[i] != NULL ){
           if(!strcmp(tag,tags[i]->tag)){
-               (tags[i]->n)++;
+			if(tags[i]->tit){
+				titulo->next = tags[i]->tit;
+				tags[i]->tit = titulo;
+			}
+			else
+				(tags[i]->tit) = titulo;
+
+			(tags[i]->n)++;
                break;
           }
           else
@@ -557,6 +580,7 @@ int search(char *tag, tagList tags ){
           strcpy(tmp->tag,tag);
           tmp->n = 1;
           tags[i] = tmp;
+		tags[i]->tit = titulo;
           return 0;
      }
      else
@@ -571,7 +595,7 @@ int search(char *tag, tagList tags ){
 
 
 
-#line 575 "jornal.c"
+#line 599 "jornal.c"
 
 #define INITIAL 0
 #define TAGS 1
@@ -761,10 +785,10 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 63 "jornal.l"
+#line 87 "jornal.l"
 
 
-#line 768 "jornal.c"
+#line 792 "jornal.c"
 
 	if ( !(yy_init) )
 		{
@@ -849,97 +873,99 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 65 "jornal.l"
+#line 89 "jornal.l"
 {BEGIN TAGS; numberTags = 0;}
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 66 "jornal.l"
+#line 90 "jornal.l"
 {BEGIN TAG;}
 	YY_BREAK
 case 3:
 /* rule 3 can match eol */
 YY_RULE_SETUP
-#line 67 "jornal.l"
+#line 91 "jornal.l"
 {BEGIN INITIAL;}
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 69 "jornal.l"
+#line 93 "jornal.l"
 {BEGIN TAGS;}
 	YY_BREAK
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 70 "jornal.l"
-{tagsPost[numberTags++]=strdup(yytext); search(yytext,ltag);}
+#line 94 "jornal.l"
+{tagsPost[numberTags++]=strdup(yytext);}
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 72 "jornal.l"
+#line 96 "jornal.l"
 {BEGIN ID;}
 	YY_BREAK
 case 7:
 /* rule 7 can match eol */
 YY_RULE_SETUP
-#line 73 "jornal.l"
+#line 97 "jornal.l"
 {id = strdup(yytext); BEGIN CLEAN;}
 	YY_BREAK
 case 8:
 /* rule 8 can match eol */
 YY_RULE_SETUP
-#line 75 "jornal.l"
+#line 99 "jornal.l"
 {BEGIN CATEGORY;}
 	YY_BREAK
 case 9:
 /* rule 9 can match eol */
 YY_RULE_SETUP
-#line 77 "jornal.l"
+#line 101 "jornal.l"
 {yytext[yyleng-1] = '\0'; category = strdup(yytext); BEGIN TITLE;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 79 "jornal.l"
+#line 103 "jornal.l"
 {title = strdup(yytext);}
 	YY_BREAK
 case 11:
 /* rule 11 can match eol */
 YY_RULE_SETUP
-#line 80 "jornal.l"
+#line 104 "jornal.l"
 {BEGIN INITIAL;}
 	YY_BREAK
 case 12:
 /* rule 12 can match eol */
 YY_RULE_SETUP
-#line 82 "jornal.l"
+#line 106 "jornal.l"
 {BEGIN DATE;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 83 "jornal.l"
+#line 107 "jornal.l"
 {date = strdup(yytext);}
 	YY_BREAK
 case 14:
 /* rule 14 can match eol */
 YY_RULE_SETUP
-#line 84 "jornal.l"
+#line 108 "jornal.l"
 {BEGIN TEXT;}
 	YY_BREAK
 case 15:
 /* rule 15 can match eol */
 YY_RULE_SETUP
-#line 86 "jornal.l"
+#line 110 "jornal.l"
 {text = strdup(yytext); BEGIN INITIAL;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 88 "jornal.l"
+#line 112 "jornal.l"
 {FILE *fp;
 						char * idPost = strdup(id);
-						fp = fopen(strcat(id,".html"), "w");
-						fprintf(fp, "<html>\n<head>\n<pub id =%s>\n<title>%s</title>\n</head>", idPost, title);
+						char *idP = strcat(idPost,".html");
+						fp = fopen(idP, "w");
+						fprintf(fp, "<html>\n<head>\n<pub id =%s>\n<title>%s</title>\n</head>", id, title);
 						fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS:\n", date);
 						for(j= 0; j < numberTags; j++){
+							search(tagsPost[j], title, idP, ltag);
 							fprintf(fp,"<tag>%s , </tag>\n", tagsPost[j]);
 						}
 						fprintf(fp,"</tags></p><p><category>%s</category></p><text>%s</text>\n</body>\n</html>", category, text);
@@ -947,10 +973,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 99 "jornal.l"
+#line 125 "jornal.l"
 ECHO;
 	YY_BREAK
-#line 954 "jornal.c"
+#line 980 "jornal.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(TAGS):
 case YY_STATE_EOF(TAG):
@@ -1955,7 +1981,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 99 "jornal.l"
+#line 125 "jornal.l"
 
 
 
@@ -1965,11 +1991,16 @@ int yywrap(){
 
 int main(){
     yylex();
+    Titulo tmp;
     FILE *fp;
 	fp = fopen("tags.html", "w");
 	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
 	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
-		fprintf(fp, "<li>Tag: %s | Ocorrência: %d</li>\n\n", ltag[i]->tag,ltag[i]->n);
+		fprintf(fp, "<li>Tag: %s | Ocorrência: %d <p>\n\n", ltag[i]->tag,ltag[i]->n);
+
+		for(tmp = ltag[i]->tit; tmp; tmp = tmp->next)
+			fprintf(fp, "<p><a href=file:///Users/ruiazevedo/Desktop/Universidade/PL/PL/%s>%s</a></p>", tmp->id,tmp->titulo);
+		fprintf(fp, "</p></li>");
 	}
     fprintf(fp, "</body></html>");
     return 0;
