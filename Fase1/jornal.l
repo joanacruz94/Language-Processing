@@ -17,8 +17,8 @@ typedef struct tBucket{
 
 // Estrutura para guardar as tags, nr de ocorrencias e correspondencia tag -> artigo
 typedef struct tagBucket{
-     char *tag;
-     int n;
+	char *tag;
+ 	int n;
 	Titulo titulo;
 }*TAG;
 
@@ -96,40 +96,41 @@ int j = 0;
 
 %%
 
-#TAG:   				{BEGIN TAGS; numberTags = 0;}
-<TAGS>tag:\{ 			{BEGIN TAG;}
-<TAGS>\n 				{BEGIN INITIAL;}
+#TAG:   			{BEGIN TAGS; numberTags = 0;}
+<TAGS>tag:\{ 		{BEGIN TAG;}
+<TAGS># 			{BEGIN INITIAL;}
 
 <TAG>\}   			{BEGIN TAGS;}
 <TAG>[^}]+ 			{tagsPost[numberTags++]=strdup(yytext);}
 
-#ID:\{				{BEGIN ID;}
-<ID>[^ ]+				{id = strdup(yytext); BEGIN CLEAN;}
+ID:\{				{BEGIN ID;}
+<ID>[^ ]+			{id = strdup(yytext); BEGIN CLEAN;}
 
-<CLEAN>[^}]+\}\n		{BEGIN CATEGORY;}
+<CLEAN>[^}]+\}\n	{BEGIN CATEGORY;}
 
-<CATEGORY>.+\n\n    	{yytext[yyleng-1] = '\0'; category = strdup(yytext); BEGIN TITLE;}
+<CATEGORY>.+\n\n    {yytext[yyleng-2] = '\0'; category = strdup(yytext); BEGIN TITLE;}
 
-<TITLE>.+				{title = strdup(yytext);}
-<TITLE>\n      		{BEGIN INITIAL;}
+<TITLE>.+			{title = strdup(yytext);}
+<TITLE>\n\n      	{BEGIN INITIAL;}
 
-#DATE:\ *\[[^]]+\]\ *   	{BEGIN DATE;}
+#DATE:\ *\[[^]]+\]\ *   {BEGIN DATE;}
 <DATE>[^\n]+ 		 	{date = strdup(yytext);}
 <DATE>\n[^\n]*\n\n 		{BEGIN TEXT;}
 
 <TEXT>[^<]+			{text = strdup(yytext); BEGIN INITIAL;}
 
-\<\/pub\>				{FILE *fp;
+
+\<\/pub\>			{FILE *fp;
 					char * idPost = strdup(id);
 					char *idP = strcat(idPost,".html");
 					fp = fopen(idP, "w");
-					fprintf(fp, "<html>\n<head>\n<meta charset=\"UTF-8\">\n<pub id =%s>\n<title>%s</title>\n</head>", id, title);
-					fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS:\n", date);
+					fprintf(fp, "<html>\n<head>\n\t<meta charset=\"UTF-8\">\n\t<pub id =%s>\n\t<title>%s</title>\n</head>\n", id, title);
+					fprintf(fp, "<body>\n\t<h2><author_date>%s</author_date></h2>\n\t<hr>\n\t<p>\n\t<tags>Tags:\n", date);
 					for(j= 0; j < numberTags; j++){
 						generate(tagsPost[j], title, idP, ltag);
-						fprintf(fp,"<tag>%s , </tag>\n", tagsPost[j]);
+						fprintf(fp,"\t\t<li><tag>%s</tag></li>\n", tagsPost[j]);
 					}
-					fprintf(fp,"</tags></p><p><category>%s</category></p><text>%s</text>\n</body>\n</html>", category, text);
+					fprintf(fp,"\t</tags>\n\t</p>\n\t<hr>\n\t<p>\t<category>%s</category></p>\n\t<hr>\n\t<text>\n%s\n\t</text>\n</body>\n</html>", category, text);
 					fclose(fp);}
 
 %%
@@ -147,12 +148,12 @@ int main(){
     	FILE *fp;
 	fp = fopen("tags.html", "w");
 	fprintf(fp, "<head><meta charset=\"UTF-8\"></head>");
-	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
+	fprintf(fp, "<html><body><h1>Índice de tags</h1>");
 
 	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
-		fprintf(fp, "<li>Tag: %s | Ocorrência: %d <p>\n\n", ltag[i]->tag,ltag[i]->n);
+		fprintf(fp, "\n<li>Tag: %s | Ocorrência: %d <p>\n\n", ltag[i]->tag,ltag[i]->n);
 		for(tmp = ltag[i]->titulo; tmp; tmp = tmp->next)
-			fprintf(fp, "<p><a href=file:///Users/ruiazevedo/Desktop/Universidade/PL/PL/%s>%s</a></p>", tmp->id,tmp->titulo);
+			fprintf(fp, "\n<p><a href=file:///Users/joanacruz/Desktop/PL/%s>%s</a></p>", tmp->id,tmp->titulo);
 		fprintf(fp, "</p></li>");
 	}
     fprintf(fp, "</body></html>");
