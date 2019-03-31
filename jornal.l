@@ -123,7 +123,7 @@ int j = 0;
 					char * idPost = strdup(id);
 					char *idP = strcat(idPost,".html");
 					fp = fopen(idP, "w");
-					fprintf(fp, "<html>\n<head>\n<pub id =%s>\n<title>%s</title>\n</head>", id, title);
+					fprintf(fp, "<html>\n<head>\n<meta charset=\"UTF-8\">\n<pub id =%s>\n<title>%s</title>\n</head>", id, title);
 					fprintf(fp, "<body><h1><author_date>%s</author_date></h1>\n<p><tags>TAGS:\n", date);
 					for(j= 0; j < numberTags; j++){
 						generate(tagsPost[j], title, idP, ltag);
@@ -146,6 +146,7 @@ int main(){
     	Titulo tmp;
     	FILE *fp;
 	fp = fopen("tags.html", "w");
+	fprintf(fp, "<head><meta charset=\"UTF-8\"></head>");
 	fprintf(fp, "<html><body><h1>Indice de tags</h1>");
 
 	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
