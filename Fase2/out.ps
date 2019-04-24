@@ -1,0 +1,1722 @@
+%!PS-Adobe-3.0
+%%Creator: graphviz version 2.40.1 (20161225.0304)
+%%Title: grafo
+%%Pages: (atend)
+%%BoundingBox: (atend)
+%%EndComments
+save
+%%BeginProlog
+/DotDict 200 dict def
+DotDict begin
+
+/setupLatin1 {
+mark
+/EncodingVector 256 array def
+ EncodingVector 0
+
+ISOLatin1Encoding 0 255 getinterval putinterval
+EncodingVector 45 /hyphen put
+
+% Set up ISO Latin 1 character encoding
+/starnetISO {
+        dup dup findfont dup length dict begin
+        { 1 index /FID ne { def }{ pop pop } ifelse
+        } forall
+        /Encoding EncodingVector def
+        currentdict end definefont
+} def
+/Times-Roman starnetISO def
+/Times-Italic starnetISO def
+/Times-Bold starnetISO def
+/Times-BoldItalic starnetISO def
+/Helvetica starnetISO def
+/Helvetica-Oblique starnetISO def
+/Helvetica-Bold starnetISO def
+/Helvetica-BoldOblique starnetISO def
+/Courier starnetISO def
+/Courier-Oblique starnetISO def
+/Courier-Bold starnetISO def
+/Courier-BoldOblique starnetISO def
+cleartomark
+} bind def
+
+%%BeginResource: procset graphviz 0 0
+/coord-font-family /Times-Roman def
+/default-font-family /Times-Roman def
+/coordfont coord-font-family findfont 8 scalefont def
+
+/InvScaleFactor 1.0 def
+/set_scale {
+       dup 1 exch div /InvScaleFactor exch def
+       scale
+} bind def
+
+% styles
+/solid { [] 0 setdash } bind def
+/dashed { [9 InvScaleFactor mul dup ] 0 setdash } bind def
+/dotted { [1 InvScaleFactor mul 6 InvScaleFactor mul] 0 setdash } bind def
+/invis {/fill {newpath} def /stroke {newpath} def /show {pop newpath} def} bind def
+/bold { 2 setlinewidth } bind def
+/filled { } bind def
+/unfilled { } bind def
+/rounded { } bind def
+/diagonals { } bind def
+/tapered { } bind def
+
+% hooks for setting color 
+/nodecolor { sethsbcolor } bind def
+/edgecolor { sethsbcolor } bind def
+/graphcolor { sethsbcolor } bind def
+/nopcolor {pop pop pop} bind def
+
+/beginpage {	% i j npages
+	/npages exch def
+	/j exch def
+	/i exch def
+	/str 10 string def
+	npages 1 gt {
+		gsave
+			coordfont setfont
+			0 0 moveto
+			(\() show i str cvs show (,) show j str cvs show (\)) show
+		grestore
+	} if
+} bind def
+
+/set_font {
+	findfont exch
+	scalefont setfont
+} def
+
+% draw text fitted to its expected width
+/alignedtext {			% width text
+	/text exch def
+	/width exch def
+	gsave
+		width 0 gt {
+			[] 0 setdash
+			text stringwidth pop width exch sub text length div 0 text ashow
+		} if
+	grestore
+} def
+
+/boxprim {				% xcorner ycorner xsize ysize
+		4 2 roll
+		moveto
+		2 copy
+		exch 0 rlineto
+		0 exch rlineto
+		pop neg 0 rlineto
+		closepath
+} bind def
+
+/ellipse_path {
+	/ry exch def
+	/rx exch def
+	/y exch def
+	/x exch def
+	matrix currentmatrix
+	newpath
+	x y translate
+	rx ry scale
+	0 0 1 0 360 arc
+	setmatrix
+} bind def
+
+/endpage { showpage } bind def
+/showpage { } def
+
+/layercolorseq
+	[	% layer color sequence - darkest to lightest
+		[0 0 0]
+		[.2 .8 .8]
+		[.4 .8 .8]
+		[.6 .8 .8]
+		[.8 .8 .8]
+	]
+def
+
+/layerlen layercolorseq length def
+
+/setlayer {/maxlayer exch def /curlayer exch def
+	layercolorseq curlayer 1 sub layerlen mod get
+	aload pop sethsbcolor
+	/nodecolor {nopcolor} def
+	/edgecolor {nopcolor} def
+	/graphcolor {nopcolor} def
+} bind def
+
+/onlayer { curlayer ne {invis} if } def
+
+/onlayers {
+	/myupper exch def
+	/mylower exch def
+	curlayer mylower lt
+	curlayer myupper gt
+	or
+	{invis} if
+} def
+
+/curlayer 0 def
+
+%%EndResource
+%%EndProlog
+%%BeginSetup
+14 default-font-family set_font
+% /arrowlength 10 def
+% /arrowwidth 5 def
+
+% make sure pdfmark is harmless for PS-interpreters other than Distiller
+/pdfmark where {pop} {userdict /pdfmark /cleartomark load put} ifelse
+% make '<<' and '>>' safe on PS Level 1 devices
+/languagelevel where {pop languagelevel}{1} ifelse
+2 lt {
+    userdict (<<) cvn ([) cvn load put
+    userdict (>>) cvn ([) cvn load put
+} if
+
+%%EndSetup
+setupLatin1
+%%Page: 1 1
+%%PageBoundingBox: 36 36 5925 296
+%%PageOrientation: Portrait
+0 0 1 beginpage
+gsave
+36 36 5889 260 boxprim clip newpath
+1 1 set_scale 0 rotate 40 40 translate
+% D. João Barreto
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+218.1953 234 65.7073 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+174.0693 229.8 moveto 88.252 (D. Jo�o Barreto) alignedtext
+grestore
+% D. André de Oviedo
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+218.1953 162 81.1681 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+161.8159 157.8 moveto 112.7588 (D. Andr� de Oviedo) alignedtext
+grestore
+% D. João Barreto->D. André de Oviedo
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 218.1953 215.8314 moveto
+218.1953 208.131 218.1953 198.9743 218.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 221.6954 190.4132 moveto
+218.1953 180.4133 lineto
+214.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 221.6954 190.4132 moveto
+218.1953 180.4133 lineto
+214.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Belchior da Silva
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+110.1953 90 93.7043 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+43.9072 85.8 moveto 132.5762 (Padre Belchior da Silva) alignedtext
+grestore
+% Escrivão João Gabriel
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+88.1953 18 88.3911 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+26.3848 13.8 moveto 123.6211 (Escriv�o Jo�o Gabriel) alignedtext
+grestore
+% Padre Belchior da Silva->Escrivão João Gabriel
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 104.6438 71.8314 moveto
+102.265 64.0463 99.4315 54.7729 96.792 46.1347 curveto
+stroke
+0 0 0 edgecolor
+newpath 100.0911 44.954 moveto
+93.8216 36.4133 lineto
+93.3966 46.9996 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 100.0911 44.954 moveto
+93.8216 36.4133 lineto
+93.3966 46.9996 lineto
+closepath stroke
+grestore
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3159.1953 18 27 18 ellipse_path stroke
+grestore
+% Padre Belchior da Silva->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 178.7292 77.6073 moveto
+193.6679 75.3464 209.4248 73.2957 224.1953 72 curveto
+526.1698 45.5098 2801.9705 21.6159 3121.8741 18.3735 curveto
+stroke
+0 0 0 edgecolor
+newpath 3122.0477 21.872 moveto
+3132.0118 18.271 lineto
+3121.9769 14.8724 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3122.0477 21.872 moveto
+3132.0118 18.271 lineto
+3121.9769 14.8724 lineto
+closepath stroke
+grestore
+% Padre Manuel Veiga
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2832.1953 234 81.8157 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2775.5596 229.8 moveto 113.2715 (Padre Manuel Veiga) alignedtext
+grestore
+% Arcebispo D. Fr. Aleixo de Meneses
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2832.1953 162 138.6406 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2730.5107 157.8 moveto 203.3691 (Arcebispo D. Fr. Aleixo de Meneses) alignedtext
+grestore
+% Padre Manuel Veiga->Arcebispo D. Fr. Aleixo de Meneses
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2832.1953 215.8314 moveto
+2832.1953 208.131 2832.1953 198.9743 2832.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 2835.6954 190.4132 moveto
+2832.1953 180.4133 lineto
+2828.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 2835.6954 190.4132 moveto
+2832.1953 180.4133 lineto
+2828.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Gaspar Soares
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3116.1953 234 83.0718 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3058.271 229.8 moveto 115.8486 (Padre Gaspar Soares) alignedtext
+grestore
+% Padre Manuel da Veiga
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3116.1953 162 92.4314 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3051.2026 157.8 moveto 129.9854 (Padre Manuel da Veiga) alignedtext
+grestore
+% Padre Gaspar Soares->Padre Manuel da Veiga
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3116.1953 215.8314 moveto
+3116.1953 208.131 3116.1953 198.9743 3116.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 3119.6954 190.4132 moveto
+3116.1953 180.4133 lineto
+3112.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3119.6954 190.4132 moveto
+3116.1953 180.4133 lineto
+3112.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2583.1953 162 91.7747 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2518.4624 157.8 moveto 129.4658 (Padre Lu�s de Azevedo) alignedtext
+grestore
+% Provincial, Padre Manuel da Veiga
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+1649.1953 90 132.9739 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+1551.9302 85.8 moveto 194.5303 (Provincial, Padre Manuel da Veiga) alignedtext
+grestore
+% Padre Luís de Azevedo->Provincial, Padre Manuel da Veiga
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2493.975 157.6076 moveto
+2347.1886 150.0018 2045.6462 132.7806 1791.1953 108 curveto
+1778.9979 106.8121 1766.2301 105.4139 1753.5645 103.9305 curveto
+stroke
+0 0 0 edgecolor
+newpath 1753.7854 100.4321 moveto
+1743.4417 102.7249 lineto
+1752.9576 107.383 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 1753.7854 100.4321 moveto
+1743.4417 102.7249 lineto
+1752.9576 107.383 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2639.6405 147.764 moveto
+2648.4816 146.3398 2657.53 145.039 2666.1953 144 curveto
+2729.9742 136.3524 3199.2107 154.8144 3243.1953 108 curveto
+3254.1511 96.3394 3251.4482 85.7073 3243.1953 72 curveto
+3231.49 52.5585 3210.1774 39.75 3191.6081 31.5107 curveto
+stroke
+0 0 0 edgecolor
+newpath 3192.7906 28.212 moveto
+3182.213 27.6076 lineto
+3190.1051 34.6763 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3192.7906 28.212 moveto
+3182.213 27.6076 lineto
+3190.1051 34.6763 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2648.5006 149.2394 moveto
+2660.3443 147.2455 2672.6121 145.3889 2684.1953 144 curveto
+2747.9742 136.3524 3217.2107 154.8144 3261.1953 108 curveto
+3272.1511 96.3394 3269.4482 85.7073 3261.1953 72 curveto
+3246.8166 48.1182 3217.941 34.2452 3194.5722 26.5557 curveto
+stroke
+0 0 0 edgecolor
+newpath 3195.5383 23.1913 moveto
+3184.9524 23.6276 lineto
+3193.4999 29.8879 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3195.5383 23.1913 moveto
+3184.9524 23.6276 lineto
+3193.4999 29.8879 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2655.9557 150.9544 moveto
+2671.3599 148.3315 2687.3405 145.7812 2702.1953 144 curveto
+2765.9742 136.3524 3235.2107 154.8144 3279.1953 108 curveto
+3290.1511 96.3394 3287.4482 85.7073 3279.1953 72 curveto
+3262.2768 43.8999 3225.2879 29.6566 3196.1082 23.0387 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.6566 19.5785 moveto
+3186.1583 21.0057 lineto
+3195.2552 26.4368 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.6566 19.5785 moveto
+3186.1583 21.0057 lineto
+3195.2552 26.4368 lineto
+closepath stroke
+grestore
+% Provincial da Companhia, Padre Gaspar Fernandes
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2582.1953 90 190.2318 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2439.5122 85.8 moveto 285.3662 (Provincial da Companhia, Padre Gaspar Fernandes) alignedtext
+grestore
+% Padre Luís de Azevedo->Provincial da Companhia, Padre Gaspar Fernandes
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2582.943 143.8314 moveto
+2582.836 136.131 2582.7088 126.9743 2582.59 118.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 2586.0897 118.3637 moveto
+2582.4511 108.4133 lineto
+2579.0904 118.4609 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 2586.0897 118.3637 moveto
+2582.4511 108.4133 lineto
+2579.0904 118.4609 lineto
+closepath stroke
+grestore
+% Provincial Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+766.1953 90 106.8452 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+689.7593 85.8 moveto 152.8721 (Provincial Francisco Vieira) alignedtext
+grestore
+% Padre Luís de Azevedo->Provincial Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2491.3615 160.5843 moveto
+2184.7522 155.6226 1197.8908 137.6942 881.1953 108 curveto
+871.1321 107.0564 860.6114 105.7945 850.1962 104.3746 curveto
+stroke
+0 0 0 edgecolor
+newpath 850.6525 100.9044 moveto
+840.261 102.9701 lineto
+849.6726 107.8355 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 850.6525 100.9044 moveto
+840.261 102.9701 lineto
+849.6726 107.8355 lineto
+closepath stroke
+grestore
+% Provincial Padre Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2919.1953 90 129.0372 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2825.0713 85.8 moveto 188.248 (Provincial Padre Francisco Vieira) alignedtext
+grestore
+% Padre Luís de Azevedo->Provincial Padre Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2638.9497 147.689 moveto
+2691.3984 135.7822 2770.3479 118.8286 2831.2204 106.3808 curveto
+stroke
+0 0 0 edgecolor
+newpath 2832.111 109.7713 moveto
+2841.211 104.3454 lineto
+2830.7136 102.9122 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 2832.111 109.7713 moveto
+2841.211 104.3454 lineto
+2830.7136 102.9122 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo->Provincial Padre Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2645.2145 148.7102 moveto
+2699.6168 137.0525 2779.0795 120.0248 2838.4348 107.3058 curveto
+stroke
+0 0 0 edgecolor
+newpath 2839.4809 110.6612 moveto
+2848.5255 105.1435 lineto
+2838.0141 103.8166 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 2839.4809 110.6612 moveto
+2848.5255 105.1435 lineto
+2838.0141 103.8166 lineto
+closepath stroke
+grestore
+% Padre Luís de Azevedo->Provincial Padre Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2651.0331 149.7046 moveto
+2708.0543 138.2383 2788.9856 120.9966 2847.1342 107.985 curveto
+stroke
+0 0 0 edgecolor
+newpath 2847.9988 111.3781 moveto
+2856.9884 105.7711 lineto
+2846.4644 104.5483 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 2847.9988 111.3781 moveto
+2856.9884 105.7711 lineto
+2846.4644 104.5483 lineto
+closepath stroke
+grestore
+% Padre António Fernandes
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+990.1953 90 99.5261 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+919.4263 85.8 moveto 141.5381 (Padre Ant�nio Fernandes) alignedtext
+grestore
+% Padre Luís de Azevedo->Padre António Fernandes
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2491.3415 160.1911 moveto
+2211.3689 154.4351 1371.2679 135.3028 1099.1953 108 curveto
+1089.7763 107.0548 1079.9376 105.805 1070.1913 104.4032 curveto
+stroke
+0 0 0 edgecolor
+newpath 1070.4968 100.9101 moveto
+1060.0894 102.8937 lineto
+1069.4623 107.8332 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 1070.4968 100.9101 moveto
+1060.0894 102.8937 lineto
+1069.4623 107.8332 lineto
+closepath stroke
+grestore
+% Provincial da Companhia
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+1208.1953 90 99.9934 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+1137.0435 85.8 moveto 142.3037 (Provincial da Companhia) alignedtext
+grestore
+% Padre Luís de Azevedo->Provincial da Companhia
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2491.7234 159.5389 moveto
+2240.796 152.5576 1545.1808 131.5992 1317.1953 108 curveto
+1307.8501 107.0327 1298.0904 105.7765 1288.417 104.3774 curveto
+stroke
+0 0 0 edgecolor
+newpath 1288.7969 100.8953 moveto
+1278.3885 102.8738 lineto
+1287.7589 107.818 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 1288.7969 100.8953 moveto
+1278.3885 102.8738 lineto
+1287.7589 107.818 lineto
+closepath stroke
+grestore
+% um Padre de Portugal
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+1412.1953 90 86.4793 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+1351.7349 85.8 moveto 120.9209 (um Padre de Portugal) alignedtext
+grestore
+% Padre Luís de Azevedo->um Padre de Portugal
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2492.3153 159.0452 moveto
+2268.825 151.5199 1696.8665 130.6201 1507.1953 108 curveto
+1499.3149 107.0602 1491.1052 105.8536 1482.9565 104.5108 curveto
+stroke
+0 0 0 edgecolor
+newpath 1483.5214 101.0567 moveto
+1473.0733 102.8142 lineto
+1482.3369 107.9558 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 1483.5214 101.0567 moveto
+1473.0733 102.8142 lineto
+1482.3369 107.9558 lineto
+closepath stroke
+grestore
+% Padre Pero Pais
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3410.1953 90 65.7322 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3366.2573 85.8 moveto 87.876 (Padre Pero Pais) alignedtext
+grestore
+% Padre Pero Pais->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3364.7411 76.9613 moveto
+3315.5925 62.8629 3238.3335 40.701 3193.8581 27.9431 curveto
+stroke
+0 0 0 edgecolor
+newpath 3194.6679 24.5343 moveto
+3184.0905 25.1412 lineto
+3192.7377 31.263 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3194.6679 24.5343 moveto
+3184.0905 25.1412 lineto
+3192.7377 31.263 lineto
+closepath stroke
+grestore
+% Carta
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+766.1953 162 29.0172 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+751.0366 157.8 moveto 30.3174 (Carta) alignedtext
+grestore
+% Carta->Provincial Francisco Vieira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 766.1953 143.8314 moveto
+766.1953 136.131 766.1953 126.9743 766.1953 118.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 769.6954 118.4132 moveto
+766.1953 108.4133 lineto
+762.6954 118.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 769.6954 118.4132 moveto
+766.1953 108.4133 lineto
+762.6954 118.4133 lineto
+closepath stroke
+grestore
+% Padre António Fernandes->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 1055.3006 76.3771 moveto
+1066.8668 74.633 1078.8347 73.0818 1090.1953 72 curveto
+1506.0518 32.402 2877.4225 20.1123 3121.8079 18.2599 curveto
+stroke
+0 0 0 edgecolor
+newpath 3121.9795 21.7588 moveto
+3131.9531 18.1841 lineto
+3121.9272 14.759 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3121.9795 21.7588 moveto
+3131.9531 18.1841 lineto
+3121.9272 14.759 lineto
+closepath stroke
+grestore
+% Padre António Fernandes->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 1063.6149 77.8206 moveto
+1078.3863 75.5013 1093.7797 73.3727 1108.1953 72 curveto
+1521.6391 32.6317 2879.5421 20.2559 3122.0136 18.2932 curveto
+stroke
+0 0 0 edgecolor
+newpath 3122.1096 21.7926 moveto
+3132.0812 18.2125 lineto
+3122.0534 14.7928 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3122.1096 21.7926 moveto
+3132.0812 18.2125 lineto
+3122.0534 14.7928 lineto
+closepath stroke
+grestore
+% D. Afonso Mendes
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+310.1953 90 76.8583 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+257.5005 85.8 moveto 105.3896 (D. Afonso Mendes) alignedtext
+grestore
+% D. Afonso Mendes->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 355.2236 75.2938 moveto
+362.5179 73.9725 370.002 72.8244 377.1953 72 curveto
+661.1196 39.4606 2809.2397 20.7266 3121.4887 18.2757 curveto
+stroke
+0 0 0 edgecolor
+newpath 3121.8433 21.7731 moveto
+3131.8158 18.1953 lineto
+3121.7888 14.7733 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3121.8433 21.7731 moveto
+3131.8158 18.1953 lineto
+3121.7888 14.7733 lineto
+closepath stroke
+grestore
+% D. Afonso Mendes->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 363.902 77.0249 moveto
+374.2306 74.9854 385.0048 73.1679 395.1953 72 curveto
+678.0887 39.5787 2811.6659 20.8629 3121.6766 18.303 curveto
+stroke
+0 0 0 edgecolor
+newpath 3121.9584 21.8009 moveto
+3131.9293 18.2188 lineto
+3121.9008 14.8011 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3121.9584 21.8009 moveto
+3131.9293 18.2188 lineto
+3121.9008 14.8011 lineto
+closepath stroke
+grestore
+% D. Afonso Mendes->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 371.2697 79.0598 moveto
+385.1981 76.2294 399.7078 73.5457 413.1953 72 curveto
+694.9106 39.7138 2811.9275 21.019 3121.5487 18.3358 curveto
+stroke
+0 0 0 edgecolor
+newpath 3121.8251 21.8337 moveto
+3131.7944 18.2471 lineto
+3121.7644 14.8339 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3121.8251 21.8337 moveto
+3131.7944 18.2471 lineto
+3121.7644 14.8339 lineto
+closepath stroke
+grestore
+% Provincial, Padre Álvaro Tavares
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+321.1953 18 127.4104 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+228.5068 13.8 moveto 185.377 (Provincial, Padre �lvaro Tavares) alignedtext
+grestore
+% D. Afonso Mendes->Provincial, Padre Álvaro Tavares
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 312.9711 71.8314 moveto
+314.1475 64.131 315.5465 54.9743 316.8539 46.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 320.3317 46.8272 moveto
+318.3822 36.4133 lineto
+313.412 45.7699 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 320.3317 46.8272 moveto
+318.3822 36.4133 lineto
+313.412 45.7699 lineto
+closepath stroke
+grestore
+% Padre Jerónimo Maiorca
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3591.1953 90 97.0776 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3522.3848 85.8 moveto 137.6211 (Padre Jer�nimo Maiorca) alignedtext
+grestore
+% Padre Jerónimo Maiorca->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3519.6437 77.8091 moveto
+3508.1263 75.8585 3496.3328 73.8681 3485.1953 72 curveto
+3380.3164 54.409 3256.394 33.9799 3195.9975 24.0462 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.2589 20.5422 moveto
+3185.8235 22.3733 lineto
+3195.1231 27.4495 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.2589 20.5422 moveto
+3185.8235 22.3733 lineto
+3195.1231 27.4495 lineto
+closepath stroke
+grestore
+% Padre Diogo de Matos
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3795.1953 90 89.3779 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3732.4004 85.8 moveto 125.5898 (Padre Diogo de Matos) alignedtext
+grestore
+% Padre Diogo de Matos->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3723.5094 79.2108 moveto
+3708.7101 76.6162 3693.4109 74.0155 3679.1953 72 curveto
+3498.5223 46.3839 3282.0226 28.5341 3196.1636 21.4263 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.3692 17.9314 moveto
+3186.1142 20.5932 lineto
+3195.7908 24.9075 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.3692 17.9314 moveto
+3186.1142 20.5932 lineto
+3195.7908 24.9075 lineto
+closepath stroke
+grestore
+% Padre Diogo de Matos->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3731.0052 77.4351 moveto
+3719.7624 75.4562 3708.1567 73.5541 3697.1953 72 curveto
+3509.8307 45.4352 3283.9364 27.2225 3196.3801 20.6809 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.3906 17.1722 moveto
+3186.1593 19.9235 lineto
+3195.8733 24.1531 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.3906 17.1722 moveto
+3186.1593 19.9235 lineto
+3195.8733 24.1531 lineto
+closepath stroke
+grestore
+% Padre Diogo de Matos->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3739.6139 75.8345 moveto
+3731.4637 74.442 3723.1595 73.1292 3715.1953 72 curveto
+3521.4148 44.5255 3286.4207 25.985 3196.1555 20.0501 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.33 16.5542 moveto
+3186.1258 19.4047 lineto
+3195.8804 23.5397 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.33 16.5542 moveto
+3186.1258 19.4047 lineto
+3195.8804 23.5397 lineto
+closepath stroke
+grestore
+% Reitor Padre Manuel Lameira
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3709.1953 18 115.4023 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3625.8106 13.8 moveto 166.7695 (Reitor Padre Manuel Lameira) alignedtext
+grestore
+% Padre Diogo de Matos->Reitor Padre Manuel Lameira
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3773.9369 72.2022 moveto
+3763.1868 63.2021 3749.9763 52.1423 3738.2982 42.3652 curveto
+stroke
+0 0 0 edgecolor
+newpath 3740.4216 39.5783 moveto
+3730.5072 35.8425 lineto
+3735.9281 44.9456 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3740.4216 39.5783 moveto
+3730.5072 35.8425 lineto
+3735.9281 44.9456 lineto
+closepath stroke
+grestore
+% Fr. Tomás de Azevedo
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+1889.1953 90 88.833 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+1826.814 85.8 moveto 124.7627 (Fr. Tom�s de Azevedo) alignedtext
+grestore
+% Fr. Tomás de Azevedo->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 1952.0048 77.161 moveto
+1963.6621 75.1493 1975.7663 73.3068 1987.1953 72 curveto
+2214.8998 45.9642 2947.9249 23.9743 3121.9042 19.0361 curveto
+stroke
+0 0 0 edgecolor
+newpath 3122.19 22.5295 moveto
+3132.0871 18.7484 lineto
+3121.9922 15.5323 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3122.19 22.5295 moveto
+3132.0871 18.7484 lineto
+3121.9922 15.5323 lineto
+closepath stroke
+grestore
+% Padre Manuel Almeida
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3411.1953 234 91.7912 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3346.6538 229.8 moveto 129.083 (Padre Manuel Almeida) alignedtext
+grestore
+% Padre Geral da Companhia Mutio Vitellequi
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3411.1953 162 166.2146 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3287.5161 157.8 moveto 247.3584 (Padre Geral da Companhia Mutio Vitellequi) alignedtext
+grestore
+% Padre Manuel Almeida->Padre Geral da Companhia Mutio Vitellequi
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3411.1953 215.8314 moveto
+3411.1953 208.131 3411.1953 198.9743 3411.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 3414.6954 190.4132 moveto
+3411.1953 180.4133 lineto
+3407.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3414.6954 190.4132 moveto
+3411.1953 180.4133 lineto
+3407.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Gaspar Pais
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3977.1953 90 74.4016 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3926.2642 85.8 moveto 101.8623 (Padre Gaspar Pais) alignedtext
+grestore
+% Padre Gaspar Pais->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3923.6194 77.3702 moveto
+3913.5547 75.325 3903.087 73.4168 3893.1953 72 curveto
+3627.8761 33.9976 3304.5464 22.0171 3196.4102 18.9292 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.4267 15.4284 moveto
+3186.3334 18.6497 lineto
+3196.2325 22.4257 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.4267 15.4284 moveto
+3186.3334 18.6497 lineto
+3196.2325 22.4257 lineto
+closepath stroke
+grestore
+% Provincial Padre Francisco Vergara
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3977.1953 18 134.5755 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3878.5049 13.8 moveto 197.3809 (Provincial Padre Francisco Vergara) alignedtext
+grestore
+% Padre Gaspar Pais->Provincial Padre Francisco Vergara
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3977.1953 71.8314 moveto
+3977.1953 64.131 3977.1953 54.9743 3977.1953 46.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 3980.6954 46.4132 moveto
+3977.1953 36.4133 lineto
+3973.6954 46.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3980.6954 46.4132 moveto
+3977.1953 36.4133 lineto
+3973.6954 46.4133 lineto
+closepath stroke
+grestore
+% Padre Afonso Mendes
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3771.1953 234 88.4343 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3709.3677 229.8 moveto 123.6553 (Padre Afonso Mendes) alignedtext
+grestore
+% irmãos da Companhia de Jesus, em Portugal
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3771.1953 162 166.6204 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3647.3555 157.8 moveto 247.6797 (irm�os da Companhia de Jesus, em Portugal) alignedtext
+grestore
+% Padre Afonso Mendes->irmãos da Companhia de Jesus, em Portugal
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3771.1953 215.8314 moveto
+3771.1953 208.131 3771.1953 198.9743 3771.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 3774.6954 190.4132 moveto
+3771.1953 180.4133 lineto
+3767.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3774.6954 190.4132 moveto
+3771.1953 180.4133 lineto
+3767.6954 190.4133 lineto
+closepath stroke
+grestore
+% Patriarca D. Afonso Mendes
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4162.1953 234 110.1256 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4082.8779 229.8 moveto 158.6348 (Patriarca D. Afonso Mendes) alignedtext
+grestore
+% Provincial Padre Mutio Vitelleschi
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4092.1953 162 132.4462 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3995.3369 157.8 moveto 193.7168 (Provincial Padre Mutio Vitelleschi) alignedtext
+grestore
+% Patriarca D. Afonso Mendes->Provincial Padre Mutio Vitelleschi
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4144.8919 216.2022 moveto
+4136.4581 207.5275 4126.1639 196.9391 4116.9193 187.4304 curveto
+stroke
+0 0 0 edgecolor
+newpath 4119.2662 184.8233 moveto
+4109.7858 180.0931 lineto
+4114.2472 189.7029 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4119.2662 184.8233 moveto
+4109.7858 180.0931 lineto
+4114.2472 189.7029 lineto
+closepath stroke
+grestore
+% D. Filipe III
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4295.1953 162 52.694 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4261.5625 157.8 moveto 67.2656 (D. Filipe III) alignedtext
+grestore
+% Patriarca D. Afonso Mendes->D. Filipe III
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4194.0521 216.7542 moveto
+4213.2453 206.3639 4237.7801 193.0819 4257.8784 182.2016 curveto
+stroke
+0 0 0 edgecolor
+newpath 4259.6377 185.2293 moveto
+4266.7655 177.3906 lineto
+4256.3051 179.0734 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4259.6377 185.2293 moveto
+4266.7655 177.3906 lineto
+4256.3051 179.0734 lineto
+closepath stroke
+grestore
+% Patriarca da Etiópia
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4447.1953 162 79.6799 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4391.9985 157.8 moveto 110.3936 (Patriarca da Eti�pia) alignedtext
+grestore
+% Provincial Mutil Viteleschi
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4447.1953 90 105.9108 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4371.5249 85.8 moveto 151.3408 (Provincial Mutil Viteleschi) alignedtext
+grestore
+% Patriarca da Etiópia->Provincial Mutil Viteleschi
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4447.1953 143.8314 moveto
+4447.1953 136.131 4447.1953 126.9743 4447.1953 118.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 4450.6954 118.4132 moveto
+4447.1953 108.4133 lineto
+4443.6954 118.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4450.6954 118.4132 moveto
+4447.1953 108.4133 lineto
+4443.6954 118.4133 lineto
+closepath stroke
+grestore
+% Padre Manuel Barradas
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2089.1953 90 93.2101 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2023.4985 85.8 moveto 131.3936 (Padre Manuel Barradas) alignedtext
+grestore
+% Padre Manuel Barradas->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2150.6455 76.46 moveto
+2161.1213 74.7512 2171.9242 73.1885 2182.1953 72 curveto
+2546.485 29.8473 2991.8484 20.3311 3121.9692 18.4316 curveto
+stroke
+0 0 0 edgecolor
+newpath 3122.2369 21.9283 moveto
+3132.187 18.2889 lineto
+3122.1391 14.9289 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3122.2369 21.9283 moveto
+3132.187 18.2889 lineto
+3122.1391 14.9289 lineto
+closepath stroke
+grestore
+% Padre Manuel Barradas->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2159.0184 78.0081 moveto
+2172.6869 75.7079 2186.8876 73.5399 2200.1953 72 curveto
+2557.5732 30.6471 2992.9776 20.7039 3121.7485 18.5481 curveto
+stroke
+0 0 0 edgecolor
+newpath 3121.9311 22.0457 moveto
+3131.8731 18.3842 lineto
+3121.8177 15.0466 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3121.9311 22.0457 moveto
+3131.8731 18.3842 lineto
+3121.8177 15.0466 lineto
+closepath stroke
+grestore
+% Padre Manuel Almada
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4234.1953 90 89.3774 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4171.5986 85.8 moveto 125.1934 (Padre Manuel Almada) alignedtext
+grestore
+% Padre Manuel Almada->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4156.3066 81.2169 moveto
+4126.2941 78.023 4091.6749 74.5704 4060.1953 72 curveto
+3725.5616 44.6763 3319.9466 25.2641 3196.5613 19.6597 curveto
+stroke
+0 0 0 edgecolor
+newpath 3196.6487 16.1602 moveto
+3186.5009 19.205 lineto
+3196.3326 23.153 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3196.6487 16.1602 moveto
+3186.5009 19.205 lineto
+3196.3326 23.153 lineto
+closepath stroke
+grestore
+% Padre Geral da Companhia
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4235.1953 18 105.7638 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4159.583 13.8 moveto 151.2246 (Padre Geral da Companhia) alignedtext
+grestore
+% Padre Manuel Almada->Padre Geral da Companhia
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4234.4477 71.8314 moveto
+4234.5546 64.131 4234.6818 54.9743 4234.8006 46.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 4238.3003 46.4609 moveto
+4234.9396 36.4133 lineto
+4231.3009 46.3637 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4238.3003 46.4609 moveto
+4234.9396 36.4133 lineto
+4231.3009 46.3637 lineto
+closepath stroke
+grestore
+% Bispo de Nicea
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4681.1953 234 64.27 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4638.4297 229.8 moveto 85.5313 (Bispo de Nicea) alignedtext
+grestore
+% Padres da Índia, Portugal e Nápoles
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4681.1953 162 136.1758 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4581.2778 157.8 moveto 199.835 (Padres da �ndia, Portugal e N�poles) alignedtext
+grestore
+% Bispo de Nicea->Padres da Índia, Portugal e Nápoles
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4681.1953 215.8314 moveto
+4681.1953 208.131 4681.1953 198.9743 4681.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 4684.6954 190.4132 moveto
+4681.1953 180.4133 lineto
+4677.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4684.6954 190.4132 moveto
+4681.1953 180.4133 lineto
+4677.6954 190.4133 lineto
+closepath stroke
+grestore
+% Carta enviada
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+5235.1953 234 58.9322 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+5196.521 229.8 moveto 77.3486 (Carta enviada) alignedtext
+grestore
+% Patriarca Bispo e outros Padres da Companhia de Jesus que ficaram na Etiópia >Continuação da carta enviada
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+5235.1953 162 399.3437 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4927.2329 157.8 moveto 615.9248 (Patriarca Bispo e outros Padres da Companhia de Jesus que ficaram na Eti�pia >Continua��o da carta enviada) alignedtext
+grestore
+% Carta enviada->Patriarca Bispo e outros Padres da Companhia de Jesus que ficaram na Etiópia >Continuação da carta enviada
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 5235.1953 215.8314 moveto
+5235.1953 208.131 5235.1953 198.9743 5235.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 5238.6954 190.4132 moveto
+5235.1953 180.4133 lineto
+5231.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 5238.6954 190.4132 moveto
+5235.1953 180.4133 lineto
+5231.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Patriarca
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+416.1953 234 63.7518 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+373.6348 229.8 moveto 85.1211 (Padre Patriarca) alignedtext
+grestore
+% imperador Seltan Sagued
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+416.1953 162 99.0157 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+345.8262 157.8 moveto 140.7383 (imperador Seltan Sagued) alignedtext
+grestore
+% Padre Patriarca->imperador Seltan Sagued
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 416.1953 215.8314 moveto
+416.1953 208.131 416.1953 198.9743 416.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 419.6954 190.4132 moveto
+416.1953 180.4133 lineto
+412.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 419.6954 190.4132 moveto
+416.1953 180.4133 lineto
+412.6954 190.4133 lineto
+closepath stroke
+grestore
+% imperador Seltan Sagued->D. Afonso Mendes
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 390.5357 144.5708 moveto
+376.5016 135.0383 358.9457 123.1134 343.8275 112.8445 curveto
+stroke
+0 0 0 edgecolor
+newpath 345.4917 109.7438 moveto
+335.2529 107.0202 lineto
+341.5585 115.5344 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 345.4917 109.7438 moveto
+335.2529 107.0202 lineto
+341.5585 115.5344 lineto
+closepath stroke
+grestore
+% Padres da Companhia de Jesus
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+523.1953 90 118.8279 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+437.2676 85.8 moveto 171.8555 (Padres da Companhia de Jesus) alignedtext
+grestore
+% imperador Seltan Sagued->Padres da Companhia de Jesus
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 442.097 144.5708 moveto
+455.9533 135.247 473.2106 123.6345 488.2399 113.5214 curveto
+stroke
+0 0 0 edgecolor
+newpath 490.4462 116.2555 moveto
+496.7888 107.7689 lineto
+486.5382 110.4479 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 490.4462 116.2555 moveto
+496.7888 107.7689 lineto
+486.5382 110.4479 lineto
+closepath stroke
+grestore
+% Certidão da resposta da carta dada pelo Patriarca
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+5699.1953 234 182.4528 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+5562.9551 229.8 moveto 272.4805 (Certid�o da resposta da carta dada pelo Patriarca) alignedtext
+grestore
+% Imperador
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+5699.1953 162 46.8719 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+5670.0435 157.8 moveto 58.3037 (Imperador) alignedtext
+grestore
+% Certidão da resposta da carta dada pelo Patriarca->Imperador
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 5699.1953 215.8314 moveto
+5699.1953 208.131 5699.1953 198.9743 5699.1953 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 5702.6954 190.4132 moveto
+5699.1953 180.4133 lineto
+5695.6954 190.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 5702.6954 190.4132 moveto
+5699.1953 180.4133 lineto
+5695.6954 190.4133 lineto
+closepath stroke
+grestore
+% Padre Francisco Roiz
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+4447.1953 234 85.9946 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+4387.3228 229.8 moveto 119.7451 (Padre Francisco Roiz) alignedtext
+grestore
+% Padre Francisco Roiz->Patriarca da Etiópia
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4441.2429 215.8314 moveto
+4440.4925 208.131 4440.2716 198.9743 4440.5802 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 4444.0745 190.6161 moveto
+4441.2193 180.4133 lineto
+4437.0888 190.1697 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4444.0745 190.6161 moveto
+4441.2193 180.4133 lineto
+4437.0888 190.1697 lineto
+closepath stroke
+grestore
+% Padre Francisco Roiz->Patriarca da Etiópia
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 4453.1477 215.8314 moveto
+4453.8981 208.131 4454.119 198.9743 4453.8104 190.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 4457.3019 190.1697 moveto
+4453.1713 180.4133 lineto
+4450.3161 190.6161 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 4457.3019 190.1697 moveto
+4453.1713 180.4133 lineto
+4450.3161 190.6161 lineto
+closepath stroke
+grestore
+% Padre Damião Calaça
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+2287.1953 90 86.9289 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+2226.5571 85.8 moveto 121.2764 (Padre Dami�o Cala�a) alignedtext
+grestore
+% Padre Damião Calaça->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 2348.9982 77.3224 moveto
+2360.3365 75.3073 2372.0943 73.4221 2383.1953 72 curveto
+2665.7636 35.8014 3009.5484 22.5933 3121.8048 19.0654 curveto
+stroke
+0 0 0 edgecolor
+newpath 3122.0481 22.5597 moveto
+3131.9357 18.7538 lineto
+3121.8328 15.563 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3122.0481 22.5597 moveto
+3131.9357 18.7538 lineto
+3121.8328 15.563 lineto
+closepath stroke
+grestore
+% Padre Turcato Parisiani
+gsave
+1 setlinewidth
+0 0 0 nodecolor
+3159.1953 90 92.7948 18 ellipse_path stroke
+0 0 0 nodecolor
+14 /Times-Roman set_font
+3093.8608 85.8 moveto 130.6689 (Padre Turcato Parisiani) alignedtext
+grestore
+% Padre Turcato Parisiani->
+gsave
+1 setlinewidth
+0 0 0 edgecolor
+newpath 3159.1953 71.8314 moveto
+3159.1953 64.131 3159.1953 54.9743 3159.1953 46.4166 curveto
+stroke
+0 0 0 edgecolor
+newpath 3162.6954 46.4132 moveto
+3159.1953 36.4133 lineto
+3155.6954 46.4133 lineto
+closepath fill
+1 setlinewidth
+solid
+0 0 0 edgecolor
+newpath 3162.6954 46.4132 moveto
+3159.1953 36.4133 lineto
+3155.6954 46.4133 lineto
+closepath stroke
+grestore
+endpage
+showpage
+grestore
+%%PageTrailer
+%%EndPage: 1
+%%Trailer
+%%Pages: 1
+%%BoundingBox: 36 36 5925 296
+end
+restore
+%%EOF
