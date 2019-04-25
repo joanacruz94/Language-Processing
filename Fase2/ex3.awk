@@ -1,6 +1,6 @@
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 ##############################################
@@ -38,11 +38,11 @@ for(i = 1; i <= NF; i++)
 #
 ##############################################
 
-length(apelidos)>0	   { printf("Número da carta: %d\n",$1);	
-					printf("Apelidos: ")
-					
-					for(i in apelidos) 
-						if(length(apelidos[i])>0)
-							printf("%s, ", apelidos[i])
-					print "\n" 
-					}
+length(apelidos)>0	{ printf("Número da carta: %d\n",$1);	
+			  printf("Apelidos: ")
+			  for(i in apelidos) 
+			      if(length(apelidos[i])>0)
+				printf("%s, ", apelidos[i])
+			  print "\n"					
+							 
+			}
