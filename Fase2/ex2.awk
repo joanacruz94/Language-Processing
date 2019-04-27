@@ -1,6 +1,6 @@
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 # Definicao de tags HTML

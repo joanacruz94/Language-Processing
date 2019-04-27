@@ -40,9 +40,10 @@ for(i = 1; i <= NF; i++)
 
 length(apelidos)>0	{ printf("Número da carta: %d\n",$1);	
 			  printf("Apelidos: ")
-			  for(i in apelidos) 
-			      if(length(apelidos[i])>0)
-				printf("%s, ", apelidos[i])
+			  for(i in apelidos){ 
+				if(length(apelidos[i]) > 0)
+					printf("%s| ", apelidos[i])
+			  }
 			  print "\n"					
 							 
 			}

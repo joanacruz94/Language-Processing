@@ -1,8 +1,6 @@
-#$4 ~ /d[eo][A-Za-z .íãó]+\ ao?/ 
-
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 # Inicio da estrutura de dados de um grafo
@@ -49,8 +47,7 @@ for(i = 1; i <= NF; i++)
 {
 	print $4;
 }
-$4 ~ /(Carta|Requerimento|Certidão)/ {	
-					gsub(/(Carta|Requerimento|Certidão)[ a-z]+(a|d)(e|o)/,"",$4);
+$4 ~ /(Carta|Requerimento|Certidão)/ {	gsub(/((Carta|Requerimento|Certidão)(([^iA-Z]+)(d(e|o)+|pelo) | enviada|)|>.+)/,"",$4);
 					split($4,autores,/ ao?s? /)
 					
 					if( contain[autores[1]][autores[2]] == 0 ){
