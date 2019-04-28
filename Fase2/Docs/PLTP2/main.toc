@@ -14,7 +14,6 @@
 \contentsline {section}{\numberline {3.2}Output's}{13}
 \contentsline {subsection}{\numberline {3.2.1}N\IeC {\'u}mero de cartas por local}{13}
 \contentsline {subsection}{\numberline {3.2.2}Gerar Ficheiros HTML}{14}
-\contentsline {subsection}{\numberline {3.2.3}Gerar Ficheiros HTML}{14}
-\contentsline {subsection}{\numberline {3.2.4}Lista de cartas}{15}
-\contentsline {subsection}{\numberline {3.2.5}Grafo DOT}{16}
+\contentsline {subsection}{\numberline {3.2.3}Lista de cartas}{15}
+\contentsline {subsection}{\numberline {3.2.4}Grafo DOT}{16}
 \contentsline {chapter}{\numberline {4}Conclus\IeC {\~a}o}{18}

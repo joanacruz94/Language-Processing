@@ -377,7 +377,7 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
     (2) Certidão da carta <preposição> <nome> <preposição> <nome>
     (3) Requerimento <preposição> <nome> <preposição> <nome>
     
-            <preposição> := de || do || a || ao || aos 
+        <preposição> := de || do || a || ao || aos 
     
 \end{verbatim}
 
@@ -389,6 +389,14 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
         <preposição> := a || ao || aos
 \end{verbatim}
 
+Existem alguns casos particulares no ficheiro de input em que o autor ou o destinatário são anónimos que também foram corretamente processados:
+\begin{verbatim}
+    (1) Carta <ao> <nome>
+    (2) Carta <preposição> <nome>
+    (1) Certidão da carta <pelo> <nome>
+    
+        <preposição> := de || do
+\end{verbatim}
 \quad De seguida, partimos essa \textit{string} através da função pré-definida \textit{split}, sendo o separador de campo as diferentes preposições definidas. Após esta filtragem, é escrito no ficheiro \textit{graph.gv} a seguinte \textit{string}:
 
 \begin{verbatim}
@@ -487,7 +495,6 @@ END { printf "}" > "graph.gv";}
 \caption{Resultado obtido no exercício 2 - HTML com índice dos anos das cartas}
 \end{figure}
 
-\subsection{Gerar Ficheiros HTML}
 \begin{figure}[h]
 \includegraphics[width=\textwidth]{ex22}
 \caption{Resultado obtido no exercício 2 - HTML correspondente a um ano}
