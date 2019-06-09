@@ -66786,7 +66786,7 @@ Etiquetas: Franaexploraoriquezasfrica
 
 <!-- ====================2015/africom-elogia-angola/index.html -->
 <pub>
-#TAG: tag:{AFRICOM} tag:{Angola} tag:{EUA} tag:{Segurana} tag:{frica} 
+#TAG: tag:{AFRICOM} tag:{Angola} tag:{EUA} tag:{Segurança} tag:{África} 
 #ID:{post-11239 post type-post status-publish format-standard has-post-thumbnail hentry category-politica category-destaque tag-africom tag-angola tag-eua tag-seguranca tag-africa}
 Pol­ticaDestaque
 

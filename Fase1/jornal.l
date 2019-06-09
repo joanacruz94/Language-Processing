@@ -133,6 +133,9 @@ ID:\{				{BEGIN ID;}
 					fprintf(fp,"\t</tags>\n\t</p>\n\t<hr>\n\t<p>\t<category>%s</category></p>\n\t<hr>\n\t<text>\n%s\n\t</text>\n</body>\n</html>", category, text);
 					fclose(fp);}
 
+
+<*>.|\n    {;}
+
 %%
 
 int yywrap(){

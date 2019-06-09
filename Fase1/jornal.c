@@ -361,8 +361,8 @@ static void yy_fatal_error (yyconst char msg[]  );
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
 
-#define YY_NUM_RULES 17
-#define YY_END_OF_BUFFER 18
+#define YY_NUM_RULES 18
+#define YY_END_OF_BUFFER 19
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -373,7 +373,7 @@ struct yy_trans_info
 static yyconst flex_int16_t yy_accept[78] =
     {   0,
         0,    0,    0,    0,    0,    0,    0,    0,    0,    0,
-        0,    0,    0,    0,    0,    0,    0,    0,   18,   17,
+        0,    0,    0,    0,    0,    0,    0,    0,   19,   17,
        17,   17,   17,    3,   17,    5,    4,   13,   17,    7,
        17,   17,   10,   17,   15,    0,    0,    0,    0,    0,
         5,   13,    0,    0,    7,    0,    0,    0,    0,   10,
@@ -981,11 +981,17 @@ YY_RULE_SETUP
 					fclose(fp);}
 	YY_BREAK
 case 17:
+/* rule 17 can match eol */
 YY_RULE_SETUP
-#line 136 "jornal.l"
+#line 137 "jornal.l"
+{;}
+	YY_BREAK
+case 18:
+YY_RULE_SETUP
+#line 139 "jornal.l"
 ECHO;
 	YY_BREAK
-#line 989 "jornal.c"
+#line 995 "jornal.c"
 case YY_STATE_EOF(INITIAL):
 case YY_STATE_EOF(TAGS):
 case YY_STATE_EOF(TAG):
@@ -1990,7 +1996,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 136 "jornal.l"
+#line 139 "jornal.l"
 
 
 
