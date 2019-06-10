@@ -1,0 +1,13 @@
+palavra {
+	def: "definicao"
+	trd: "word"
+	sin: "cenas"
+	sin: "mais cenas"
+}
+
+coisa {
+	def: "def"
+	trd: "trd"
+	sin: "sin1"
+	sin: "sin2"
+}
