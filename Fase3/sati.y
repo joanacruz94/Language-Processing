@@ -140,6 +140,23 @@ void initLatex(FILE *f){
      fprintf(f,"\\begin{document}\n");
 }
 
+void makeAppendix(FILE *f){
+    Dicionario tmp = dic;
+
+    fprintf(f,"\n\\appendix\n");
+    fprintf(f,"\\section{Apendice}\n");
+    fprintf(f,"\\begin{itemize}\n");
+
+    while(tmp){
+        if(tmp->pal->ref == 1){
+            fprintf(f,"\\item %s $\\to$ Def: %s\n",tmp->pal->nome,tmp->pal->def);
+            tmp->pal->ref = 0;
+        }
+        tmp = tmp->prox;
+    }
+    fprintf(f,"\\end{itemize}\n");
+    fprintf(f,"\n\\end{document}\n");
+}
 /* ---------------------------------- Main -----------------------------------*/
 
 

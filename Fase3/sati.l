@@ -1,4 +1,4 @@
-%x def sin trd word
+%x DIC FILES def sin trd word
 
 %{
 
@@ -11,6 +11,7 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
 %option noyywrap
 
 %%
+<DIC>{
 {STRING}+\{                                   {yytext[yyleng-1]='\0';
                                               yylval.texto = strdup(yytext);
                                               BEGIN (word); return WORD;}
@@ -45,4 +46,21 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.]|\ 
                                               return TRD;}
 
 .|\n                                          ;
+}
+
+<FILES>{
+{NOME}+             {
+                              Palavra p = lookup(dic,yytext);
+                              if( p ){
+                                   underlineRef(yytext,p->trd);
+                                   set_ref(p);
+                              }
+                              else
+                                   fprintf(out,"%s",yytext);
+                         }
+}
 %%
+
+void underlineRef(char *pt, char *en){
+      fprintf(out,"\\underline{%s}\\footnote{%s}",pt,en);
+}
