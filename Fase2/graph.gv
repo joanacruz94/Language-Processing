@@ -1,5 +1,6 @@
 digraph grafo {
 	size="100,100";
+	rankdir=LR;
 	"D. João Barreto" -> "D. André de Oviedo";
 	"Padre Belchior da Silva" -> "Escrivão João Gabriel";
 	"Padre Manuel Veiga" -> "Arcebispo D. Fr. Aleixo de Meneses";
@@ -10,7 +11,7 @@ digraph grafo {
 	"Padre Luís de Azevedo" -> "";
 	"Padre Luís de Azevedo" -> "Provincial Francisco Vieira";
 	"Padre Luís de Azevedo" -> "Provincial Padre Francisco Vieira";
-	"Provincial Francisco Vieira" -> "";
+	"" -> "Provincial Francisco Vieira";
 	"Padre Luís de Azevedo" -> "Padre António Fernandes";
 	"D. Afonso Mendes" -> "";
 	"Padre Luís de Azevedo" -> "Provincial da Companhia";
@@ -30,11 +31,11 @@ digraph grafo {
 	"Padre Manuel Almada" -> "";
 	"Bispo de Nicea" -> "Padres da Índia, Portugal e Nápoles";
 	"Patriarca D. Afonso Mendes" -> "D. Filipe III";
-	"Patriarca Bispo e outros Padres da Companhia de Jesus que ficaram na Etiópia >Continuação da carta enviada" -> "todos os padres que ficaram na Etiópia";
+	"" -> "Patriarca Bispo e outros Padres da Companhia de Jesus que ficaram na Etiópia ";
 	"Padre Patriarca" -> "imperador Seltan Sagued";
 	"imperador Seltan Sagued" -> "D. Afonso Mendes";
 	"imperador Seltan Sagued" -> "Padres da Companhia de Jesus";
-	"Certidão da resposta da carta dada pelo Patriarca" -> "Imperador";
+	"Patriarca" -> "Imperador";
 	"D. Afonso Mendes" -> "Provincial, Padre Álvaro Tavares";
 	"Padre Francisco Roiz" -> "Patriarca da Etiópia";
 	"Padre Diogo de Matos" -> "Reitor Padre Manuel Lameira";

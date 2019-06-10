@@ -1,6 +1,6 @@
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 # Definicao de tags HTML
@@ -11,8 +11,8 @@ BEGIN { FS=";"
         headerTitle="Processamento de Linguagens-TP2";
         bodyTitle="Índice de anos";
         headerFormat= "<html><head><meta charset = 'UTF-8'/><title>%s</title></head><body><center><h1>%s</h1></center><ul>\n";
-       # refHtml = "<a href=file:///Users/joanacruz/Desktop/%s>%s</a>\n";
-        refHtml = "<a href=file:///Users/ruiazevedo/Desktop/Universidade/PL/PL/Fase2/%s>%s</a>\n";
+        refHtml = "<a href=file:///Users/joanacruz/Desktop/PL/Fase2/%s>%s</a>\n";
+       # refHtml = "<a href=file:///Users/ruiazevedo/Desktop/Universidade/PL/PL/Fase2/%s>%s</a>\n";
         textHtml = "<h3>%s</h3>%s";
         endHtml = "</ul></body></html>";
         printf headerFormat , headerTitle , bodyTitle > "index.html";

@@ -23,7 +23,7 @@
        \textbf{Trabalho Prático 2}\\ Relatório de Desenvolvimento
        } %Titulo do documento
 %\title{Um Exemplo de Artigo em \LaTeX}
-\author{Joana Cruz\\ (xxx) \and Maurício Salgado\\ (xxxx)
+\author{Joana Cruz\\ (A76270) \and Maurício Salgado\\ (A71407)
          \and Rui Azevedo\\ (A80789)
        } %autores do documento
 \date{\today}
@@ -127,7 +127,7 @@ De seguida apresentámos o \textit{script} desenvolvido para obter a informaçã
 \begin{verbatim}
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 ##############################################
@@ -198,7 +198,7 @@ END{
 \begin{verbatim}
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 # Definicao de tags HTML
@@ -303,7 +303,7 @@ Para a \textit{string} ser partida em apelidos, desenvolveu-se uma expressão re
 \begin{verbatim}
 ##############################################
 #
-# Definicao do Filter Separator
+# Definicao do Field Separator
 # RS = \n (por omissao)
 #
 ##############################################
@@ -349,7 +349,7 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
 					
 					for(i in apelidos) 
 						if(length(apelidos[i])>0)
-							printf("%s, ", apelidos[i])
+							printf("%s| ", apelidos[i])
 					print "\n" 
 					}
 
@@ -377,7 +377,7 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
     (2) Certidão da carta <preposição> <nome> <preposição> <nome>
     (3) Requerimento <preposição> <nome> <preposição> <nome>
     
-            <preposição> := de || do || a || ao || aos 
+        <preposição> := de || do || a || ao || aos 
     
 \end{verbatim}
 
@@ -389,6 +389,14 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
         <preposição> := a || ao || aos
 \end{verbatim}
 
+Existem alguns casos particulares no ficheiro de input em que o autor ou o destinatário são anónimos que também foram corretamente processados:
+\begin{verbatim}
+    (1) Carta <ao> <nome>
+    (2) Carta <preposição> <nome>
+    (1) Certidão da carta <pelo> <nome>
+    
+        <preposição> := de || do
+\end{verbatim}
 \quad De seguida, partimos essa \textit{string} através da função pré-definida \textit{split}, sendo o separador de campo as diferentes preposições definidas. Após esta filtragem, é escrito no ficheiro \textit{graph.gv} a seguinte \textit{string}:
 
 \begin{verbatim}
@@ -414,7 +422,7 @@ length(apelidos)>0	   { printf("Número da carta: %d\n",$1);
 # graph.gv
 ##############################################
 BEGIN { FS=";"
-        graph = "digraph grafo {\n\tsize=\"100,100\";\n";
+        graph = "digraph grafo {\n\tsize=\"100,100\";\n\trankdir=LR;\n";
         printf graph > "graph.gv";}
 ##############################################
 # Normalizacao de todos os campos do registo
@@ -437,7 +445,7 @@ for(i = 1; i <= NF; i++)
 ##############################################
 $4 ~ /(Carta|Requerimento|Certidão)/ 
 {	
-    gsub(/(Carta|Requerimento|Certidão)[ a-z]+(a|d)(e|o)/,"",$4);
+    gsub(/((Carta|Requerimento|Certidão)(([^iA-Z]+)(d(e|o)+|pelo) | enviada|)|>.+)/,"",$4);
     split($4,autores,/ ao?s? /)
 					
     if( contain[autores[1]][autores[2]] == 0 ){
@@ -475,6 +483,43 @@ END { printf "}" > "graph.gv";}
         <n> := número do exercício
 \end{verbatim}
 
+\subsection{Número de cartas por local}
+\begin{figure}[h]
+\includegraphics[scale=0.50]{ex1}
+\caption{Resultado obtido no exercício 1}
+\end{figure}
+
+\subsection{Gerar Ficheiros HTML}
+\begin{figure}[h]
+\includegraphics[scale=0.50]{ex21}
+\caption{Resultado obtido no exercício 2 - HTML com índice dos anos das cartas}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{ex22}
+\caption{Resultado obtido no exercício 2 - HTML correspondente a um ano}
+\end{figure}
+
+\newpage
+
+\subsection{Lista de cartas}
+\begin{figure}[h]
+\includegraphics[scale=0.50]{ex3}
+\caption{Resultado obtido no exercício 3}
+\end{figure}
+
+\newpage 
+
+\subsection{Grafo DOT}
+\begin{figure}[h]
+\includegraphics[width=\textwidth]{ex41}
+\caption{Resultado obtido no exercício 4 - Ficheiro .gv}
+\end{figure}
+
+\begin{figure}[h]
+\includegraphics[scale=0.23]{grafo}
+\caption{Resultado obtido no exercício 4 - Grafo obtido}
+\end{figure}
 \chapter{Conclusão}
 
 \qquad A linguagem de programação \textbf{\textit{GAWK}} mostrou-se muito útil e versátil para resolver este tipo de trabalhos. Neste caso, uma vez que o ficheiro já estava com formato \textbf{\textit{CSV}}, o processo de filtrar e extrair informação de ficheiros tornou-se uma tarefa menos custosa, uma vez que o \textit{\textbf{GAWK}} apresenta vários mecanismos, intuitivos, de processar estes mesmos ficheiros.
