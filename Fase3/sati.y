@@ -1,203 +1,210 @@
 %{
-#include <stdlib.h>
-#include <ctype.h>
-typedef struct sinonym {
-    char *sinonym;
-    struct sinonym *next;
-}*Sinonym;
+     extern int yylex();
+     extern int yylineno;
+     extern char *yytext;
+     void yyerror(char*);
 
-typedef struct singleTerm{
-    char *term;
-    char *definition; 
-    char *designationEN;
-    int refCount;
-    Sinonym sinonyms;
-    struct singleTerm *next;
-}*SingleTerm;
+     #include <stdlib.h>
+     #include <stdio.h>
+     #include <string.h>
+     #include <ctype.h>
 
-SingleTerm dictionary=NULL;
-SingleTerm unionST(SingleTerm , SingleTerm);
-Sinonym createSin(char *, Sinonym );
-SingleTerm createSingleTerm(char *, char *, char *, Sinonym );
-int yylex();
-int yyerror(char *m);
+
+/* Estruturas de dados */
+     typedef struct sinonimos{
+          char *nome;
+          struct sinonimos *next;
+     }*Sinonimos;
+
+     typedef struct palavra{
+          char *nome;
+          char *definicao;
+          char *traducao;
+          Sinonimos sinonimo;
+          int referencia;
+     }*Palavra;
+
+     typedef struct dicionario{
+          Palavra pal;
+          struct dicionario *next;
+     }*Dicionario;
+
+/* Prototipos */
+     Palavra create_word();
+     void add_name(Palavra , char *);
+     void add_def(Palavra , char *);
+     void add_trd(Palavra , char *);
+     void add_sin(Palavra , char *);
+     void set_ref(Palavra);
+     char *get_trd(char *, int *);
+     Dicionario insert_word(Dicionario , Palavra );
+     Palavra lookup(char *);
+
+     Dicionario dic = NULL;
+     Palavra pal = NULL;
+
+
 %}
+
 %union{
-    char *p;
-    char *s;
-    SingleTerm st;
-    Sinonym sm;
+  char* texto;
 }
-%token <p> pal
-%token <s> str
+%token DEF SIN TRD WORD
+%type<texto> DEF SIN TRD WORD NOME ARGUMENTO
 
-%type <p> Palavra
-%type <s> Significado
-%type <sm> ListaSin Sinonimos
-%type <st> LinhasDic LinhaDic 
 %%
-Dicionario: LinhaDic LinhasDic '.'                                 {dictionary=unionST($1,$2);}
-          ;
-LinhasDic:                                                         {$$=NULL;}
-         | ';' LinhaDic LinhasDic                                  {$$=unionST($2,$3);}
-         ;
-LinhaDic: Palavra ':' Significado ':' Palavra ':' '[' Sinonimos    {$$=createSingleTerm($1,$3,$5,$8);}
-        ;
-Sinonimos: ']'                                                     {$$=NULL;}
-         | Palavra ListaSin ']'                                    {$$=createSin($1,$2);}
-         ;
-ListaSin:                                                          {$$=NULL;}
-        | ',' Palavra ListaSin                                     {$$=createSin($2,$3);}
-        ;
-Palavra: pal                                                       {$$=$1;}
-       ;
-Significado: str                                                   {$$=$1;}
+
+/* ----------------------------- Gramatica ---------------------------------- */
+
+
+DICIONARIO : PALAVRAS
            ;
+PALAVRAS   : PALAVRAS PALAVRA                {dic = insert_word(dic,pal);}
+           |
+           ;
+PALAVRA    : NOME ARGUMENTOS
+           ;
+NOME       : WORD                            {pal = create_word() ; add_name(pal,$1);}
+           ;
+ARGUMENTOS : ARGUMENTOS ARGUMENTO
+           |
+           ;
+ARGUMENTO  : DEF                             {add_def(pal,$1);}
+           | TRD                             {add_trd(pal,$1);}
+           | SIN                             {add_sin(pal,$1);}
+           ;
+
 %%
+
 #include "lex.yy.c"
+/* ------------------------------ Codigo ------------------------------------ */
 
-SingleTerm unionST(SingleTerm st, SingleTerm dict){
-    st->next=dict;   
-    dict=st;
-    return dict;
+Palavra create_word(){
+     Palavra p = malloc(sizeof(struct palavra));
+     p->nome = NULL;
+     p->definicao  = NULL;
+     p->traducao  = NULL;
+     p->sinonimo  = NULL;
+     p->referencia  = 0;
+
+     return p;
 }
 
-Sinonym createSin(char *word, Sinonym list){
-    Sinonym aux = (Sinonym)malloc(sizeof(struct sinonym));
-    aux->sinonym = strdup(word);
-    aux->next=list;
-    return aux;
+/* Adiciona o nome da palavra */
+void add_name(Palavra p, char *name){
+     p->nome = strdup(name);
 }
 
-SingleTerm createSingleTerm(char *t, char *d, char *dE, Sinonym ss){
-    SingleTerm aux=(SingleTerm)malloc(sizeof(struct singleTerm));
-    aux->term = strdup(t);
-    aux->definition = strdup(d);
-    aux->designationEN = strdup(dE);
-    aux->refCount=0;
-    aux->sinonyms = ss;
-    aux->next=NULL;
-    return aux;
+/* Adiciona a definicacao de uma palavra */
+void add_def(Palavra p, char *definicao){
+     p->definicao = strdup(definicao);
 }
 
-int strcmpCInsensitive(char *s1, char *s2){
-    int i=0, eq=1;
-
-    while(s1[i] && s2[i] && (eq=(tolower(s1[i])==tolower(s2[i]))))
-        i++;
-    
-    return (s1[i] || s2[i]) || !eq;
+/* Adiciona a traducao em ingles de uma palavra */
+void add_trd(Palavra p, char *traducao){
+     p->traducao = strdup(traducao);
 }
 
-char *searchTerm(char *term){
-    SingleTerm dictAux=dictionary;  
-    Sinonym sinAux=NULL;
-    char *termEN=NULL;
+/* Adiciona um sinonimo de um palavra */
+void add_sin(Palavra p, char *sinonimo){
+     Sinonimos s = malloc(sizeof(struct sinonimos));
+     s->nome = strdup(sinonimo);
+     s->next = p->sinonimo;
+     p->sinonimo  = s;
+}
 
-    while(dictAux && !termEN){ 
-        if(!strcmpCInsensitive(dictAux->term,term))
-            termEN=dictAux->designationEN;
-        sinAux=dictAux->sinonyms;
-        while(sinAux && !termEN){
-            if(!strcmpCInsensitive(sinAux->sinonym,term))
-                termEN=dictAux->designationEN;
-            sinAux=sinAux->next;
-        }
-        dictAux=dictAux->next;
+/* Palavra mencionada */
+void set_ref(Palavra p){
+     p->referencia = 1;
+}
+
+/* Adiciona uma palavra ao dicionario */
+Dicionario insert_word(Dicionario dic, Palavra p){
+     Dicionario new = malloc(sizeof(struct dicionario));
+     new->pal = p;
+     new->next = dic;
+     dic = new;
+
+     return new;
+}
+
+char* get_trd(char *p, int *val){
+    Dicionario tmp = dic;
+    while(tmp){
+      if(!strcmp(tmp->pal->nome, p)) {
+          if(tmp->pal->referencia)
+            *val = 1;
+          else{
+            *val = 0;
+            tmp->pal->referencia = 1;
+          }
+          return tmp->pal->traducao;
+      }
+      tmp = tmp->next;
     }
-    if(termEN) dictAux->refCount ++;
-
-    return termEN;
+    return NULL;
 }
 
-void beginLatex(FILE *f){
-    fprintf(f,"\\documentclass{article}\n");
-    fprintf(f,"\\usepackage[bottom]{footmisc}\n");
-    fprintf(f,"\n\\begin{document}\n");
+/* --------------------------------- Latex -----------------------------------*/
+
+void initLatex(FILE *f){
+     fprintf(f,"\\documentclass{article}\n");
+     fprintf(f,"\\usepackage[bottom]{footmisc}\n\n");
+     fprintf(f,"\\begin{document}\n");
 }
 
 void makeAppendix(FILE *f){
-    SingleTerm aux = dictionary;
-    
+    Dicionario tmp = dic;
+
     fprintf(f,"\n\\appendix\n");
-    fprintf(f,"\\section{Apendice}\n"); 
+    fprintf(f,"\\section{Apendice}\n");
     fprintf(f,"\\begin{itemize}\n");
 
-    while(aux){
-        if(aux->refCount>0){
-            fprintf(f,"\\item %s $\\to$ Def: %s\n",aux->term,aux->definition);
-            aux->refCount=0;
+    while(tmp){
+        if(tmp->pal->referencia == 1){
+            fprintf(f,"\\item %s $\\to$ Def: %s\n",tmp->pal->nome,tmp->pal->definicao);
+            tmp->pal->referencia = 0;
         }
-        aux=aux->next;
+        tmp = tmp->next;
     }
-    
     fprintf(f,"\\end{itemize}\n");
     fprintf(f,"\n\\end{document}\n");
 }
 
-int yyerror(char *m){
-    printf("%s in line: %d\n", m, yylineno);
+/* ---------------------------------- Main -----------------------------------*/
+
+void yyerror(char *error){
+  fprintf(stderr, "ERROR : %s \n", error);
 }
-
-int getOutputFileName(char outfile[],int argc, char **argv, int i){
-    if(i+1<argc && argv[i+1][0]=='-'){        //found a flag
-        i++; 
-        switch(argv[i][1]){
-            case 'o':
-                i ++;
-                if(i<argc){
-                    outfile[0]=0;
-                    strcat(outfile,argv[i]);
-                }else fprintf(stderr,"The -o flag requires an extra argument, please check the manual for usage\nWriting to the default output...\n");
-                break;
-            default:
-                fprintf(stderr,"%s is not a valid flag, please check the manual for usage\n", argv[i]);
-                break;
-        }
-    }
-    return i;
-}
-
-
 
 int main(int argc, char **argv){
-    char outfile[100];
 
-    if(argc>2){
-        yyin = fopen(argv[1],"r");
-        if(yyin){
-            parseDict();        //BEGIN DICT on flex
-            yyparse();
-            fclose(yyin);
+     char outfile[200];
 
-            if(yynerrs==0){     //check if any syntax where found by yacc
-                parseFiles();   //BEGIN FILES on flex
-                for(int i=2; i<argc; i++){ 
-                    yyin = fopen(argv[i],"r");
-                    if(yyin){
-                        outfile[0]=0;
-                        strcat(outfile,argv[i]);
-                        i=getOutputFileName(outfile,argc,argv,i); 
-                        strcat(outfile,".tex");
-                        yyout = fopen(outfile,"w");
-                        beginLatex(yyout);
-                        yylex();
-                        makeAppendix(yyout);
-                        fclose(yyin);
-                        fclose(yyout);
-                    }else{
-                        fprintf(stderr,"File %s was not found. Parsing will resume.\n",argv[i]);
-                    }   
-                }
-            }else{
-                fprintf(stderr,"Files not parsed. Fix the bugs on your dictionary file.\n");
-            }
-        }else{
-            fprintf(stderr,"Dictionary file doesn't exist.\n");
-        }   
-    }else{
-        fprintf(stderr,"Few arguments.\n");
-    }
+     parseDic();
 
-    return 0;
+     yyin = fopen(argv[1], "r");
+     yyparse();
+     fclose(yyin);
+
+
+     parseFiles();
+
+     for(int i = 2; i < argc ; i++){
+       yyin = fopen(argv[i], "r");
+       if(yyin){
+
+         strcat(outfile,argv[i]);
+         strcat(outfile,".tex");
+         yyout = fopen(outfile,"w");
+         initLatex(yyout);
+         yylex();
+         makeAppendix(yyout);
+         fclose(yyin);
+         fclose(yyout);
+       }
+       memset(outfile,0,200);
+     }
+
+     return 0;
 }

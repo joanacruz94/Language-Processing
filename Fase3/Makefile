@@ -8,4 +8,4 @@ install: sati.l sati.y
 .PHONY: clean
 
 clean:
-	rm sati y.output y.tab.c y.tab.h lex.yy.c
+	rm sati y.tab.c y.tab.h lex.yy.c
