@@ -914,7 +914,7 @@ YY_RULE_SETUP
 
                           }
                           else{
-                               fprintf(yyout,"%s ",yytext);
+                               fprintf(yyout,"%s",yytext);
                           }
                         }
 	YY_BREAK
@@ -922,7 +922,7 @@ case 16:
 /* rule 16 can match eol */
 YY_RULE_SETUP
 #line 68 "sati.l"
-{;}
+{fprintf(yyout,"%s",yytext);}
 	YY_BREAK
 
 case 17:
@@ -1959,10 +1959,10 @@ void parseFiles(){
 }
 
 void underlineRef(char *pt, char *en){
-      fprintf(yyout,"\\underline{%s}\\footnote{%s} ",pt,en);
+      fprintf(yyout,"\\underline{%s}\\footnote{%s}",pt,en);
 }
 
 void underline(char *pt){
-    fprintf(yyout,"\\underline{%s} ",pt);
+    fprintf(yyout,"\\underline{%s}",pt);
 }
 

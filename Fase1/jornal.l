@@ -156,7 +156,7 @@ int main(){
 	for(int i = 0; i < MAX && ltag[i] != NULL; i++){
 		fprintf(fp, "\n<li>Tag: %s | Ocorrência: %d <p>\n\n", ltag[i]->tag,ltag[i]->n);
 		for(tmp = ltag[i]->titulo; tmp; tmp = tmp->next)
-			fprintf(fp, "\n<p><a href=file:///Users/joanacruz/Desktop/PL/%s>%s</a></p>", tmp->id,tmp->titulo);
+			fprintf(fp, "\n<p><a href=file:///Users/joanacruz/Desktop/PL/Fase1/%s>%s</a></p>", tmp->id,tmp->titulo);
 		fprintf(fp, "</p></li>");
 	}
     fprintf(fp, "</body></html>");

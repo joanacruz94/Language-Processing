@@ -62,10 +62,10 @@ STRING ([a-zA-Z0-9]|[áàâãéèêíóôõúçñÁÀÂÃÉÈÍÓÔÕÚÇ,-.])
 
                           }
                           else{
-                               fprintf(yyout,"%s ",yytext);
+                               fprintf(yyout,"%s",yytext);
                           }
                         }
-<*>.|\n                 {;}
+<*>.|\n                 {fprintf(yyout,"%s",yytext);}
 }
 
 %%
@@ -80,9 +80,9 @@ void parseFiles(){
 }
 
 void underlineRef(char *pt, char *en){
-      fprintf(yyout,"\\underline{%s}\\footnote{%s} ",pt,en);
+      fprintf(yyout,"\\underline{%s}\\footnote{%s}",pt,en);
 }
 
 void underline(char *pt){
-    fprintf(yyout,"\\underline{%s} ",pt);
+    fprintf(yyout,"\\underline{%s}",pt);
 }
